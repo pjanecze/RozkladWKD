@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory 
+        android:title="Ustawienia"
+        android:key="preference">
+		<CheckBoxPreference
+                android:key="local_schedules"
+                android:summary="@string/summary_local_schedules"
+                android:defaultValue="true"
+                android:title="@string/title_local_schedules"/>
+        <CheckBoxPreference
+        	android:key="check_updates"
+        	android:summary="@string/summary_check_updates"
+        	android:defaultValue="true"
+        	android:title="@string/title_check_updates"
+        	android:dependency="local_schedules"/>
+        <EditTextPreference
+        	android:key="username"
+        	android:summary="@string/summary_username"
+        	android:defaultValue="@string/noone"
+        	android:title="@string/title_username"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+    	android:title="Informacje"
+    	android:key="info">
+    	
+    	<Preference
+    		android:key="db_version"
+    		android:title="@string/version"
+    		android:defaultValue="-1"
+    		/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

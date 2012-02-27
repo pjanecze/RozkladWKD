@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rozkład WKD</string>
+    <string name="description">Aplikacja służy do wyznaczania rozkładu jazdy kolejek WKD.</string>
+    <string name="main_up_text">Wybierz stacje początkową i końcową</string>
+    <string name="main_from_text">Od stacji:</string>
+    <string name="main_to_text">Do stacji:</string>
+    <string name="main_where_am_i">Gdzie jesteś?</string>
+    <string name="main_location_text">Współrzędne:</string>
+    <string name="main_search_text">Wyszukaj połączenia</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_donate">Wspomóż</string>
+    <string name="menu_update">Update</string>
+    <string name="menu_other_apps">Inne aplikacje</string>
+    <string name="positive_button">Ok</string>
+    <string name="connection_failed_title">Problem z połączeniem!</string>
+	<string name="connection_failed_mess">Niestety nie udało się połączyć z serwerem. Sprawdź czy jesteś podłączony do internetu. Jeśli problem będzie się powtarzał daj nam o tym znać!</string>
+	<string name="update_database_success">Uaktualnienie bazy wykonane!</string>
+	<string name="database_insert_error_title">Problem z zapisem do bazy</string>
+	<string name="database_insert_error_message">Niestety nie udało się zapisać danych do bazy danych. Jeśli problem będzie sie powtarzał skontaktuj się z twórcą tego programu</string>
+	<string name="station_pick_error_title">Błąd w wyborze stacji</string>
+	<string name="station_pick_error_mess">Jesteś na ostatniej stacji, nie możesz wybrać kierunku na tą stację!</string>
+	<string name="show_all">Pokaż wszystkie</string>
+	<string name="dont_show_all">Nie pokazuj wszystkich</string>
+	<string name="downloading_schedules">Pobieranie. Proszę czekać...</string>
+	<string name="have_not_found_connections">Niestety, nie znaleziono żadnych połączeń.</string>
+	<string name="there_is_no_network_connection">Brak połączenia z internetem!</string>
+	<string name="refresh">Odśwież</string>
+	<string name="info">Informacje</string>
+	<string name="info_text">
+		Skróty:\n\n- A - kursuje na odcinku W-wa Śródmieście WKD - Milanówek od pon. do pt. oprócz świąt; na odcinku Podkowa Leśna - Milanówek w dni świąteczne i soboty\n- D - kursuje od poniedziałku do piątku oprócz świąt\n- 1 - nie kursuje w lipcu i sierpniu\n- 2 - kursuje tylko w lipcu i sierpniu\n- 3 - kursuje od poniedziałku do piątku oprócz świąt\n\n 
+		Rozkład WKD automatycznie \"zgaduje\" czy jest dzień świąteczny lub powszedni oraz czy są wakacje i nie pokazuje zbędnych kolejek. Jednak użytkownik ma możliwość pokazania wszystkich kolejek poprzez wybranie z menu: \"Pokaż wszystkie\".
+		\n\nPo lewej stronie oznaczone jest za ile minut odjeżdza kolejka. Aplikacja pokazuję kolejki do 5 godzin do przodu. Pokazywane są też kolejki, które już odjechały (do 5 min).
+	</string>
+	<string name="main_info_text">
+		Rozkład WKD 1.2a\n\n
+		Program ten nie jest oficjalnym rozkładem WKD. Pomimo włożeniu wszelkich starań w poprawnym wyświetlaniu rozkładu, może się zdarzyć, że niektóre połączenia nie będą poprawnie wyświetlane - autor aplikacji nie ponosi odpowiedzialności za ewentualne kłopoty z tym związane.\n\n
+		Publikowane przez użytkowników wiadomości (w menu \"wiadomości od użytkowników\") są ich prywatnymi tekstami. Autor aplikacji nie ponosi odpowiedzialności za treść tych tekstów.\n\n
+		Podziękowania dla Dant za pomoc przy tworzeniu ikon.\n\n
+		\u00a9 2011 Paweł Janeczek\n\n   
+		
+	</string>
+	<string name="show_now">Teraz</string>
+	<string name="specify_time">Wybierz czas</string>
+	<string name="choose_date_and_time_text">Wybierz date i godzinę odjazdu:</string>
+	<string name="user_messages_text">Wiadomości od użytkowników</string>
+	<string name="loader_frames_duration">150</string>
+	<string name="username">Twój nick (max.30 znaków)</string>
+	<string name="message">Treść wiadomości (max.255 znaków)</string>
+	<string name="adding_new_message">Dodawanie nowej wiadomości</string>
+	<string name="noone"></string>
+	<string name="add">Dodaj</string>
+	<string name="cancel">Anuluj</string>
+	<string name="fields_cannot_be_empty">Pola nie mogą być puste</string>
+	<string name="uploading_message">Trwa wysyłanie wiadomości...</string>
+	<string name="uploading_message_success">Wiadomość poprawnie wysłana</string>
+	<string name="uploading_message_error">Wystąpił błąd podczas wysyłania wiadomości</string>
+	<string name="have_not_found_messages">Nie znaleziono żadnych wiadomości</string>
+	<string name="creating_new_message">Tworzenie nowej wiadomości</string>
+	
+	<string name="summary_local_schedules">Lokalna baza danych dla rozkładu (nie potrzeba połączenia z siecią)</string>
+	<string name="title_local_schedules">Lokalna baza rozkładu</string>
+	<string name="summary_check_updates">Sprawdzanie, przy każdym uruchomieniu aplikacji, czy na serwerze jest nowy rozkład.</string>
+	<string name="title_check_updates">Automatyczne sprawdzanie wersji rozkładu</string>
+	<string name="summary_username">Nazwa użytkownika, która jest używana przy wiadomościach</string>
+	<string name="title_username">Nazwa użytkownika, która jest używana przy wiadomościach</string>
+	<string name="version">Wersja rozkładu</string>
+	
+	<string name="do_you_want_local_schedule">Czy chcesz mieć lokalny rozkład WKD? \n\nJeżeli wybierzesz tak, nastąpi pobranie rozkładu z serwera i już więcej nie będziesz musiał się łączyć z internetem aby sprawdzić rozkład. \n\nJeżeli wybierzesz nie, przy każdym sprawdzaniu połączenia aplikacja będzie korzystała z internetu.</string>
+	<string name="new_schedule">Na serwerze jest nowy rozkład WKD. Czy chcesz go pobrać?</string>
+	<string name="menu_settings">Ustawienia</string>
+	
+	<string name="menu_synch">Akutalizuj rozkład</string>
+</resources>

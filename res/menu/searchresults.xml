@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/menu_searchresults_show_all"
+          android:icon="@android:drawable/ic_menu_agenda"
+          android:title="@string/show_all" />
+  <item android:id="@+id/menu_searchresults_refresh"
+          android:icon="@drawable/ic_menu_refresh"
+          android:title="@string/refresh" />         
+  <item android:id="@+id/menu_searchresults_info"
+          android:icon="@android:drawable/ic_menu_info_details"
+          android:title="@string/menu_info" />  
+             
+</menu>

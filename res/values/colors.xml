@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="search_list_red">#B00012</color>
+<color name="search_list_yellow">#827C2B</color>
+<color name="search_list_neutral">#1F1F1F</color>
+<color name="separator_color">#7A7A7A</color>
+<color name="main_layout_background">#F5FAF9</color>
+<color name="dark_grey">#7A7A7A</color>
+<color name="very_dark_grey">#4A4A4A</color>
+<color name="black">#000000</color>
+<color name="white">#FFFFFF</color>
+<color name="dark_violet">#8A7476</color>
+<color name="light_green">#EEF7ED</color>
+<color name="light_brown">#9E6305</color>
+</resources>

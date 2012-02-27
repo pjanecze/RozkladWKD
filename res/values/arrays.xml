@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string-array name="stations">
+		<item>W-wa Śródmieście</item>
+		<item>W-wa Ochota</item>
+		<item>W-wa Zachodni</item>
+		<item>W-wa Reduta Ordona</item>
+		<item>W-wa Al. Jerozolimskie</item>
+		<item>W-wa Raków</item>
+		<item>W-wa Salomea</item>
+		<item>Opacz</item>
+		<item>Michałowice</item>
+		<item>Reguły</item>
+		<item>Malichy</item>
+		<item>Tworki</item>
+		<item>Pruszków</item>
+		<item>Komorów</item>
+		<item>Nowa wieś</item>
+		<item>Kanie Helenowskie</item>
+		<item>Otrębusy</item>
+		<item>Podkowa Leśna Wsch.</item>
+		<item>Podkowa Leśna Gł.</item>
+		<item>(M) Podkowa Leśna Zach.</item>
+		<item>    Polesie</item>
+		<item>    Milanówek Grudów</item>
+		<item>(GM) Podkowa Leśna zach.</item>
+		<item>Kazimierówka</item>
+		<item>Brzózki</item>
+		<item>Grodzisk Maz. Okrężna</item>
+		<item>Grodzisk Maz. Piaskiowa</item>
+		<item>Grodzisk Maz. Jordanowice</item>
+		<item>Grodzisk Maz. Radońska</item>
+	</string-array>
+
+	
+
+	
+	
+</resources>

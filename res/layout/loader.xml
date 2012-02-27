@@ -1,0 +1,12 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/ic_loader0" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader1" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader2" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader3" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader4" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader5" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader6" android:duration="@string/loader_frames_duration" />
+    <item android:drawable="@drawable/ic_loader7" android:duration="@string/loader_frames_duration" />
+    
+</animation-list>

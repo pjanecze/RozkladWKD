@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/add_new_message_dialog_root">
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<LinearLayout android:orientation="vertical"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:padding="5dp">
+			<TextView android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/creating_new_message" 
+				android:paddingBottom="10dp"
+				android:gravity="center_horizontal"/>
+			<EditText android:id="@+id/add_new_message_dialog_username"
+				android:layout_width="fill_parent" android:maxLength="30"  android:layout_height="fill_parent"
+				android:hint="@string/username" />
+
+
+			<EditText android:id="@+id/add_new_message_dialog_message"
+				android:singleLine="false"
+				android:maxLines="3"
+				android:lines="3"
+				android:gravity="top"
+				 android:inputType="textCapSentences|textMultiLine"
+				android:maxLength="255" android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/message" />
+				
+			<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" >
+			<Button android:id="@+id/add_new_message_dialog_add_button"
+				android:layout_alignParentLeft="true"
+				android:layout_height="wrap_content"
+				android:text="@string/add"
+				android:layout_width="100dp"
+				
+			/>
+			<Button android:id="@+id/add_new_message_dialog_cancel_button"
+				android:layout_toRightOf="@id/add_new_message_dialog_add_button"
+				android:layout_height="wrap_content"
+				android:layout_width="100dp"
+				android:text="@string/cancel"
+				
+			/>
+		</RelativeLayout>
+		</LinearLayout>
+	
+		
+	</ScrollView>
+</LinearLayout>
