@@ -2,6 +2,7 @@ package pj.rozkladWKD;
 
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ import com.pj.lib.errorhandler.Error;
 
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -37,12 +38,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
@@ -51,18 +53,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class RozkladWKD extends ListActivity {
+public class RozkladWKD extends Activity {
 
 	private static final String TAG = "MainActivity";
 
@@ -101,15 +99,13 @@ public class RozkladWKD extends ListActivity {
 	public static final String PREFS_NAME = "RozkladWKD";
 
 
-	ProgressDialog uploadDialog;
+	
 	public static final String FROM_SPINNER_TEXT = "FROM_SPINNER_TEXT";
 	public static final String TO_SPINNER_TEXT = "TO_SPINNER_TEXT";
 	public static final String USERNAME = "username";
 	
-	LinkedList<UserMessage> userMessagesList;
-	MessageAdapter messageAdapter;
-	ImageView messageLoader;
-	AnimationDrawable messageLoaderAnimation;
+	private DownloadSchedule downloader = null;
+	
 	
 	/**
 	 * Spinnery: od której stacji, do której stacji
@@ -117,21 +113,17 @@ public class RozkladWKD extends ListActivity {
 	private Spinner fromSpinner, toSpinner;
 	private Button searchButton, dateButton, timeButton;
 	private ImageButton changeStationsButton1;
-	private ImageButton changeStationsButton2;
-	private ImageButton refreshMessagesButton;
-	private ImageButton writeNewMessageButton;
+	
 	private ImageButton showMessagesButton;
 	private CheckBox showNowCheckbox;
 	private TextView chooseDateTimeTextView;
 	
-	private ScrollView scrollView;
-	private RelativeLayout messageLayout;
+	
 	
 	private Calendar choosenDateTime;
 
-	private Boolean error = false;
 
-	private static SimpleDateFormat formatterDate;
+	
 
 	private int mYear;
     private int mMonth;
@@ -139,14 +131,6 @@ public class RozkladWKD extends ListActivity {
 	private int mMinute;
 	private int mHour;
 	private ConnectivityManager connectivityManager;
-	
-	private Boolean isMessageShown = false;
-	private Boolean messageDownloaded = false;
-	
-	private Dialog newMessageDialog;
-	// variables for message dialog
-	Button addButton;
-	Button cancelButton;
 	
 	private Menu menu = null;
 	
@@ -158,7 +142,10 @@ public class RozkladWKD extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rozklad_wkd_main);
 
+		if(savedInstanceState!=null) {
+            restoreProgress(savedInstanceState);
 
+        }
 		
 		// przypisanie spinnerów
 		fromSpinner = (Spinner) findViewById(R.id.from_spinner);
@@ -169,9 +156,7 @@ public class RozkladWKD extends ListActivity {
 		dateButton = (Button) findViewById(R.id.set_date);
 		timeButton = (Button) findViewById(R.id.set_time);
 		changeStationsButton1 = (ImageButton) findViewById(R.id.change_station_view1);
-		changeStationsButton2 = (ImageButton) findViewById(R.id.change_station_view2);
-		refreshMessagesButton = (ImageButton) findViewById(R.id.user_messages_refresh);
-		writeNewMessageButton = (ImageButton) findViewById(R.id.user_messages_add);
+		
 		showMessagesButton = (ImageButton) findViewById(R.id.show_messages);
 		showNowCheckbox= (CheckBox) findViewById(R.id.show_now);
 		choosenDateTime = Calendar.getInstance();
@@ -181,12 +166,8 @@ public class RozkladWKD extends ListActivity {
         mHour = choosenDateTime.get(Calendar.HOUR_OF_DAY);
         mMinute = choosenDateTime.get(Calendar.MINUTE);
         
-        messageLoader = (ImageView) findViewById(R.id.user_messages_loader);
-        messageLoader.setBackgroundResource(R.layout.loader);
-        messageLoaderAnimation = (AnimationDrawable) messageLoader.getBackground();
         
-		scrollView = (ScrollView) findViewById(R.id.scroll_view);
-        messageLayout = (RelativeLayout) findViewById(R.id.message_layout);
+        
         
 		connectivityManager =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		
@@ -208,6 +189,7 @@ public class RozkladWKD extends ListActivity {
 		
 	}
 
+	
 	private void atFirstStart() {
 		if(!settings.contains(LOCAL_SCHEDULE)) {
 			showDialog(DIALOG_LOCAL_SCHEDULE);
@@ -305,15 +287,6 @@ public class RozkladWKD extends ListActivity {
 				toSpinner.setSelection(temp);
 			}
 		});
-		changeStationsButton2.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				int temp = fromSpinner.getSelectedItemPosition();
-				fromSpinner.setSelection(toSpinner.getSelectedItemPosition());
-				toSpinner.setSelection(temp);
-			}
-		});
 		showNowCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
@@ -342,47 +315,15 @@ public class RozkladWKD extends ListActivity {
 				
 			}
 		});
-		refreshMessagesButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				startDownloadingAnimation();
-				refreshMessagesButton.setClickable(false);
-				new DownloadMessages().execute(DownloadMessages.GET_MESSAGES);
-			}
-		});
-		writeNewMessageButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				showAddMessageDialog();
-				
-			}
-		});
+		
+		
 		showMessagesButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				if(isMessageShown) {
-					scrollView.setVisibility(View.VISIBLE);
-					messageLayout.setVisibility(View.GONE);
-					isMessageShown = false;
-					showMessagesButton.setImageResource(R.drawable.ic_dialog_email);
-					
-					
-				} else {
-					scrollView.setVisibility(View.GONE);
-					messageLayout.setVisibility(View.VISIBLE);
-					isMessageShown = true;
-					showMessagesButton.setImageResource(R.drawable.ic_dialog_email_green);
-					if(!messageDownloaded) {
-						messageDownloaded = true;
-						startDownloadingAnimation();
-						refreshMessagesButton.setClickable(false);
-						new DownloadMessages().execute(DownloadMessages.GET_MESSAGES);
-					}
-				}
+				Intent intent = new Intent(RozkladWKD.this, MessageActivity.class);
+				startActivity(intent);
+		
 			}
 		});
 		
@@ -544,49 +485,7 @@ public class RozkladWKD extends ListActivity {
 	
 	
 	
-	private void showAddMessageDialog() {
-		newMessageDialog = new Dialog(this);
-		newMessageDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		newMessageDialog.setContentView(R.layout.add_new_message_dialog);
-		
-		
-		
-		final EditText username = (EditText) newMessageDialog.findViewById(R.id.add_new_message_dialog_username);
-		username.setText(settings.getString(USERNAME, getString(R.string.noone)));
-		final EditText message = (EditText) newMessageDialog.findViewById(R.id.add_new_message_dialog_message);
-		
-		addButton = (Button) newMessageDialog.findViewById(R.id.add_new_message_dialog_add_button);
-		cancelButton= (Button) newMessageDialog.findViewById(R.id.add_new_message_dialog_cancel_button);
-		addButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				String mess = message.getText().toString();
-				String name = username.getText().toString();
-				if(mess.equals("") || name.equals("")) {
-					Toast.makeText(RozkladWKD.this, R.string.fields_cannot_be_empty, Toast.LENGTH_SHORT).show();
-				} else {
-					showProgressDialog();
-					
-					new DownloadMessages().execute(DownloadMessages.SEND_MESSAGE, name, mess);
-					
-					editor = settings.edit();
-					editor.putString(USERNAME, name);
-					editor.commit();
-				}
-			}
-		});
-		cancelButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				newMessageDialog.dismiss();
-			}
-		});
-
-		newMessageDialog.show();
-		
-	}
+	
 	
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -617,7 +516,8 @@ public class RozkladWKD extends ListActivity {
 							editor.putBoolean(NEW_VERSION_AVAILABLE, true);
 							editor.commit();
 							
-							new DownloadSchedule().execute(null);
+							downloader = new DownloadSchedule();
+							downloader.execute(new Void[] {});
 						}
 					})
 					.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
@@ -632,7 +532,7 @@ public class RozkladWKD extends ListActivity {
 						}
 					});
 	    	builder1.setIcon(R.drawable.ic_launcher_wkd);
-	    	builder1.setTitle("Rozk³ad WKD");
+	    	builder1.setTitle("Rozk¸ad WKD");
 	    	return builder1.create();
 	    case DIALOG_NEW_SCHEDULE:
 	    	editor = settings.edit();
@@ -646,7 +546,8 @@ public class RozkladWKD extends ListActivity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							
-							new DownloadSchedule().execute(null);
+							downloader = new DownloadSchedule();
+							downloader.execute(new Void[] {});
 						}
 					})
 					.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
@@ -701,124 +602,7 @@ public class RozkladWKD extends ListActivity {
             return "0" + String.valueOf(c);
     }
     
-    private class DownloadMessages extends AsyncTask<Object, Object, Object>{
-    	public static final int GET_MESSAGES = 1;
-    	public static final int SEND_MESSAGE = 2;
-    	
-    	Exception e = null;
-    	
-    	int what;
-		@Override
-		protected Object doInBackground(Object... params) {
-			
-			what = ((Integer)params[0]).intValue();
-			
-			switch(what) {
-			case GET_MESSAGES:
-				try {
-					userMessagesList = getUserMessages();
-				} catch (JSONException e) {
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}	
-					this.e = e;
-				} catch (ParseException e) {
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-					this.e = e;
-				} catch (ClientProtocolException e) {
-					error = true;
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-					this.e = e;
-				} catch (NotFoundException e) {
-					error = true;
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-					this.e = e;
-				} catch (IOException e) {
-					error = true;
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-				}
-				break;
-			case SEND_MESSAGE:
-				String username = (String) params[1];
-				String mess = (String) params[2];
-				
-				try{
-					sendNewUserMessage(username, mess);
-				} catch (JSONException e) {
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}		
-					this.e = e;
-				} catch (ClientProtocolException e) {
-					error = true;
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-					this.e = e;
-				} catch (NotFoundException e) {
-					error = true;
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-					this.e = e;
-				} catch (IOException e) {
-					error = true;
-					if(RozkladWKD.DEBUG_LOG) {
-						Log.w(TAG, e);
-					}
-				}
-				
-				break;
-			}
-			
-			
-			return null;
-		}
-		
-
-
-		@Override
-		protected void onPostExecute(Object result) {
-			
-				switch(what) {
-				case GET_MESSAGES:
-					setListAdapter();
-					stopDownloadingAnimation();
-					refreshMessagesButton.setClickable(true);
-					break;
-				case SEND_MESSAGE:
-					hideProgressDialog();
-					if(error) {
-						Toast.makeText(RozkladWKD.this, R.string.uploading_message_error, Toast.LENGTH_SHORT).show();
-					} else {
-						error = false;
-						newMessageDialog.dismiss();
-						Toast.makeText(RozkladWKD.this, R.string.uploading_message_success, Toast.LENGTH_SHORT).show();
-						
-						startDownloadingAnimation();
-						new DownloadMessages().execute(DownloadMessages.GET_MESSAGES);
-					}
-					break;
-			
-				}
-				
-				if(e != null) {
-					Error.handle(RozkladWKD.this, "WKD", e);
-				}
-		}
-		
-		
-
-		
-	 }
+    
     
     private class ScheduleVersionCheck extends AsyncTask<Integer, Void, Boolean> {
 
@@ -921,7 +705,7 @@ public class RozkladWKD extends ListActivity {
     
     private class DownloadSchedule extends AsyncTask<Void, Integer, Boolean> {
 
-    	ProgressDialog progressDialog;
+    	public ProgressDialog progressDialog;
     	
     	LocalDB localDB;
     	
@@ -929,15 +713,11 @@ public class RozkladWKD extends ListActivity {
     	
     	private Exception e;
     	
+    	
 		@Override
 		protected void onPreExecute() {
-			progressDialog = new ProgressDialog(RozkladWKD.this);
-			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-			progressDialog.setMessage("Pobieranie rozk³adu");
-			progressDialog.setCancelable(false);
-			progressDialog.setIcon(R.drawable.ic_launcher_wkd);
-			progressDialog.setTitle("Rozk³ad WKD");
-			progressDialog.show();
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+			createProgressDialog();
 			
 			localDB = new LocalDB(RozkladWKD.this);
 		}
@@ -1037,7 +817,8 @@ public class RozkladWKD extends ListActivity {
 
 		@Override
 		protected void onPostExecute(Boolean result) {
-			
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+			downloader = null;
 			progressDialog.dismiss();
 			if(e != null) {
 				Error.handle(RozkladWKD.this, "WKD", e);
@@ -1053,130 +834,23 @@ public class RozkladWKD extends ListActivity {
 				}
 			}
 		}
+
+
+
+		public void createProgressDialog() {
+			progressDialog = new ProgressDialog(RozkladWKD.this);
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			progressDialog.setMessage(getString(R.string.downloading_schedule));
+			progressDialog.setCancelable(false);
+			progressDialog.setIcon(R.drawable.ic_launcher_wkd);
+			progressDialog.setTitle(R.string.app_name);
+			progressDialog.show();
+		}
 		
 		
     	
     }
-    
-    private void setListAdapter() {
-		if(RozkladWKD.DEBUG_LOG) {
-		    Log.i(TAG, "set list adapter");
-	    }
-		if(error) {
-			Toast.makeText(this, R.string.there_is_no_network_connection, 1000).show();
-		} else if(userMessagesList == null) {
-			
-			Toast.makeText(this, R.string.have_not_found_messages, 1000).show();
-		} else {
-
-        	
-			messageAdapter = new MessageAdapter(this, R.layout.rozklad_wkd_user_messages_row, userMessagesList, (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE)); 
-			
-			setListAdapter(messageAdapter );
-		}		
-	}
-    
-
-	static LinkedList<UserMessage> getUserMessages() throws JSONException, ParseException, ClientProtocolException, NotFoundException, IOException {
-		LinkedList<UserMessage> messagesList = new LinkedList<UserMessage>();
-			formatterDate = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-		
-			Calendar cal = Calendar.getInstance();
-			
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);  
-			
-			
-			
-		    nameValuePairs.add(new BasicNameValuePair("requestType", "GET_MESSAGES"));  
-		    
-		    if(DEBUG_LOG) {
-			    Log.i(TAG, "getting messages from server");
-
-		    }
-
-		    
-		    
-		    // Send the HttpPostRequest and receive a JSONObject in return
-		    JSONObject jsonObjRecv = pj.rozkladWKD.HttpClient.SendHttpPost(nameValuePairs);
-		
-		    if(jsonObjRecv == null || jsonObjRecv.getString("result") == "ERROR") {
-		    	return null;
-		    }
-		    
-		    
-			JSONArray arr = jsonObjRecv.getJSONArray("db");
-			JSONObject obj;
-			
-			
-			
-			UserMessage message;
-
-
-			for(int i = 0; i < arr.length(); i++) {
-				obj = arr.getJSONObject(i);
-				message= new UserMessage();
-
-				
-				
-				
-	            cal.setTime((Date)formatterDate.parse(obj.getString("time_char")));
-	            message.time = (Calendar) cal.clone();
-	            
-	            message.message = obj.getString("message");
-	            message.fromWho = obj.getString("USER");
-	            
-	            messagesList.add(message);
-			}
-
-			return messagesList;
-		 
-
-	
-
-	}
-	private Boolean sendNewUserMessage(String username, String mess) throws ClientProtocolException, JSONException, IOException {	
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);  
-	
-	    nameValuePairs.add(new BasicNameValuePair("requestType", "SEND_MESSAGE"));
-	    nameValuePairs.add(new BasicNameValuePair("username", username));
-	    nameValuePairs.add(new BasicNameValuePair("message", mess));
-	    
-	    if(DEBUG_LOG) {
-		    Log.i(TAG, "send message from server");
-	    }
-
-
-	    
-	    // Send the HttpPostRequest and receive a JSONObject in return
-	    JSONObject jsonObjRecv = pj.rozkladWKD.HttpClient.SendHttpPost(nameValuePairs);
-	
-	    if(jsonObjRecv == null || jsonObjRecv.getString("result") == "ERROR") {
-	    	return false;
-	    } else {
-	    	return true;
-	    }
-	}
-    
-    
-    private void startDownloadingAnimation() {
-    	messageLoader.setVisibility(View.VISIBLE);
-    	messageLoaderAnimation.start();
-	}
-	private void stopDownloadingAnimation() {
-		messageLoader.setVisibility(View.INVISIBLE);
-		messageLoaderAnimation.stop();
-	}
-	
-
-	private void showProgressDialog() {
-		uploadDialog = ProgressDialog.show( this, getString(R.string.app_name) , getString(R.string.uploading_message), true);
-
-	}
-	private void hideProgressDialog() {
-		uploadDialog.dismiss();
-	}
-
-
+ 
 
 	@Override
 	protected void onResume() {
@@ -1203,6 +877,26 @@ public class RozkladWKD extends ListActivity {
 		
 	}
 	
+	private static WeakReference<ProgressDialog> weakDialog;
+	
+	@Override
+    protected void onSaveInstanceState(Bundle saveState) {
+        super.onSaveInstanceState(saveState);
+        if(downloader != null) {
+        	weakDialog = new WeakReference<ProgressDialog>(downloader.progressDialog);
+        	saveState.putBoolean("waiting",true);
+        }
+    }
+	
+	private void restoreProgress(Bundle savedInstanceState) {
+		boolean waiting=savedInstanceState.getBoolean("waiting");
+        if (waiting) {
+            
+            ProgressDialog refresher=(ProgressDialog) weakDialog.get();
+            refresher.dismiss();
+            downloader.createProgressDialog();
+        }
+	}
 
 
 }

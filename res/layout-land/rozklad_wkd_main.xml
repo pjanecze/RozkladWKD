@@ -12,40 +12,41 @@
 				android:orientation="vertical" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:background="@drawable/rounded_background">
 
-				<TextView android:id="@+id/from_text"
-					android:layout_alignParentTop="true" android:layout_width="fill_parent"
-					android:layout_height="wrap_content" android:text="@string/main_from_text"
-					android:paddingBottom="2dp" android:paddingTop="5dp" android:paddingLeft="2dp"/>
-				
-				<LinearLayout 
-				    android:id="@+id/ll1"
-				    android:layout_below="@id/from_text"
-				    android:layout_height="wrap_content"
-				    android:layout_width="match_parent"
-				    android:orientation="horizontal"
-				    android:paddingLeft="3dp"
-				    android:paddingRight="3dp">
-				    <LinearLayout 
-				        android:layout_height="wrap_content"
-				        android:layout_width="0dp"
-				        android:orientation="vertical"
-				        android:layout_weight="1">
-				        
-				        <Spinner android:id="@+id/from_spinner"
+			    <LinearLayout 
+			        android:id="@+id/ll1"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal">
+			        <LinearLayout 
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="wrap_content"
+			            android:orientation="vertical">
+			            <TextView android:id="@+id/from_text"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content" android:text="@string/main_from_text"
+							android:paddingBottom="2dp" android:paddingTop="5dp" android:paddingLeft="2dp"/>
+			            <Spinner android:id="@+id/from_spinner"
 							android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-				        <TextView
-							android:layout_width="fill_parent" android:layout_height="wrap_content"
-							android:text="@string/main_to_text" android:paddingTop="5dp" android:paddingBottom="2dp"/>
-				        <Spinner android:id="@+id/to_spinner"
-							android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-				    </LinearLayout>
-				    <ImageButton android:src="@drawable/ic_change_stations"
+			        </LinearLayout>
+			        <ImageButton android:src="@drawable/ic_change_stations"
 							android:id="@+id/change_station_view1" android:layout_width="wrap_content"
 							android:layout_height="match_parent" 
 							android:layout_gravity="center"
 							style="@style/imageButton_style"/>
-				    
-				</LinearLayout>
+			        <LinearLayout 
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_height="wrap_content"
+			            android:orientation="vertical">
+			           <TextView
+							android:layout_width="fill_parent" android:layout_height="wrap_content"
+							android:text="@string/main_to_text" android:paddingTop="5dp" android:paddingBottom="2dp"/>
+				        <Spinner android:id="@+id/to_spinner"
+							android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+			        </LinearLayout>
+			    </LinearLayout>
+				
 
 				
 				<View
@@ -117,8 +118,7 @@
 			</RelativeLayout>
 
 	</ScrollView>
-	
-	
+
 	<RelativeLayout android:layout_width="fill_parent"
 		android:layout_height="90dp" android:layout_weight="1" android:background="@drawable/rounded_button_background" >
 

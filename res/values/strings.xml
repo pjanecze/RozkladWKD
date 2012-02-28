@@ -27,6 +27,7 @@
 	<string name="there_is_no_network_connection">Brak połączenia z internetem!</string>
 	<string name="refresh">Odśwież</string>
 	<string name="info">Informacje</string>
+	<string name="downloading_schedule">Pobieranie rozkładu</string>
 	<string name="info_text">
 		Skróty:\n\n- A - kursuje na odcinku W-wa Śródmieście WKD - Milanówek od pon. do pt. oprócz świąt; na odcinku Podkowa Leśna - Milanówek w dni świąteczne i soboty\n- D - kursuje od poniedziałku do piątku oprócz świąt\n- 1 - nie kursuje w lipcu i sierpniu\n- 2 - kursuje tylko w lipcu i sierpniu\n- 3 - kursuje od poniedziałku do piątku oprócz świąt\n\n 
 		Rozkład WKD automatycznie \"zgaduje\" czy jest dzień świąteczny lub powszedni oraz czy są wakacje i nie pokazuje zbędnych kolejek. Jednak użytkownik ma możliwość pokazania wszystkich kolejek poprzez wybranie z menu: \"Pokaż wszystkie\".
@@ -71,4 +72,10 @@
 	<string name="menu_settings">Ustawienia</string>
 	
 	<string name="menu_synch">Akutalizuj rozkład</string>
+	
+	<string name="messages">Wiadomości</string>
+	
+	<string name="only_local_details">Szczegóły połączenia są dostępne tylko gdy aplikacja korzysta z lokalnej bazy danych.</string>
+	<string name="connection_details">Szczegóły połączenia</string>
+	<string name="ok">Ok</string>
 </resources>

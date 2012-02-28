@@ -1,6 +1,8 @@
 package pj.rozkladWKD;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import java.util.LinkedList;
 
@@ -57,8 +59,11 @@ public class LocalDB extends SQLiteOpenHelper {
     	  "direction character varying(20),"+
     	  "type character(2));";
 
+    private Context context;
+    
     LocalDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -143,10 +148,7 @@ public class LocalDB extends SQLiteOpenHelper {
 			Calendar cal = Calendar.getInstance();
 			
 			Cursor c = getReadableDatabase().query(DICTIONARY_TABLE_NAME, 
-					new String[] {"ST_" + fromStation ,
-									"ST_" + toStation ,
-									"type"
-							},
+					null,
 					"ST_" + fromStation + " is not null and ST_" + toStation + " is not null and " +
 					"ST_" + fromStation + " > " + fromMin + " and ST_" + fromStation + " < " + toMin+ " and direction = ?", 
 					new String[] { direction}, 
@@ -155,16 +157,13 @@ public class LocalDB extends SQLiteOpenHelper {
 					"ST_" + fromStation);
 			
 			
-			cursorToList(schedulesList, c, cal);
+			cursorToList(schedulesList, c, cal, fromStation, toStation);
 			
 		} else {
 			Calendar cal = Calendar.getInstance();
 			
 			Cursor c = getReadableDatabase().query(DICTIONARY_TABLE_NAME, 
-					new String[] {"ST_" + fromStation,
-									"ST_" + toStation,
-									"type"
-							},
+					null,
 					"ST_" + fromStation + " is not null and ST_" + toStation + " is not null and " +
 					"ST_" + fromStation + " > " + fromMin + " and ST_" + fromStation + " <= " + (23 * 60 + 59)+ " and direction = ?", 
 					new String[] { direction}, 
@@ -173,16 +172,13 @@ public class LocalDB extends SQLiteOpenHelper {
 					"ST_" + fromStation);
 			
 			
-			cursorToList(schedulesList, c, cal);
+			cursorToList(schedulesList, c, cal, fromStation, toStation);
 			
 			cal = Calendar.getInstance();
 			cal.setTimeInMillis(System.currentTimeMillis() + 1000*60*60*24);
 			
 			Cursor c1 = getReadableDatabase().query(DICTIONARY_TABLE_NAME, 
-					new String[] {"ST_" + fromStation,
-									"ST_" + toStation,
-									"type"
-							},
+					null,
 					"ST_" + fromStation + " is not null and ST_" + toStation + " is not null and " +
 					"ST_" + fromStation + " >= 0 and ST_" + fromStation + " <= " + toMin+ " and direction = ?", 
 					new String[] { direction}, 
@@ -194,14 +190,15 @@ public class LocalDB extends SQLiteOpenHelper {
 			
 			
 			
-			cursorToList(schedulesList, c1, cal);
+			cursorToList(schedulesList, c1, cal, fromStation, toStation);
 		}
 		getReadableDatabase().close();
 		return schedulesList;
 	}
 
-	private void cursorToList(LinkedList<Schedule> schedulesList, Cursor c, Calendar cal) {
+	private void cursorToList(LinkedList<Schedule> schedulesList, Cursor c, Calendar cal, long fromColumn, long toColumn) {
 		
+		String[] stationNames = context.getResources().getStringArray(R.array.stations);
 		if(c != null ) {
 			if(c.moveToFirst()) {
 
@@ -209,19 +206,32 @@ public class LocalDB extends SQLiteOpenHelper {
 				do {
 					schedule = new Schedule();
 
-					final int fromTime = c.getInt(0);
+					final int fromTime = c.getInt(c.getColumnIndex("st_" + fromColumn));
 					cal.set(Calendar.HOUR_OF_DAY, ((Double)Math.floor(fromTime / 60)).intValue());
 					cal.set(Calendar.MINUTE, fromTime % 60);
 					cal.set(Calendar.SECOND, 0);		
 					schedule.fromTime = (Calendar) cal.clone();
 					
-					final int toTime = c.getInt(1);
+					final int toTime = c.getInt(c.getColumnIndex("st_" + toColumn));
 					cal.set(Calendar.HOUR_OF_DAY, ((Double)Math.floor(toTime / 60)).intValue());
 					cal.set(Calendar.MINUTE, toTime % 60);
 					cal.set(Calendar.SECOND, 0);	
 					schedule.toTime = (Calendar) cal.clone();
 					
-					schedule.type = c.getString(2).trim();
+					schedule.type = c.getString(c.getColumnIndex("type")).trim();
+					
+					ArrayList<Object[]> stationTimes= new ArrayList<Object[]>(); 
+					if(toColumn > fromColumn) {
+						for(int i = 1; i <= 29; i++) {
+							addStationTime(stationTimes, c, "st_" + i, stationNames);
+						}
+					} else {
+						for(int i = 29; i >=1; i--) {
+							addStationTime(stationTimes, c, "st_" + i, stationNames);
+						}
+					}
+					
+					schedule.stationsTimes = stationTimes;
 					
 					schedulesList.add(schedule);
 					
@@ -232,6 +242,21 @@ public class LocalDB extends SQLiteOpenHelper {
 		}
 		
 		
+	}
+
+
+	
+	private void addStationTime(ArrayList<Object[]> toAdd, Cursor c, String columnName, String[] stationsNames) {
+		Integer number =c.getInt(c.getColumnIndex(columnName));
+		if(number != null && number >0 && number < 1441) {
+			String[] arr = columnName.split("_");
+			Calendar cal = Calendar.getInstance();
+			cal.set(Calendar.HOUR_OF_DAY, ((Double)Math.floor(number / 60)).intValue());
+			cal.set(Calendar.MINUTE, number % 60);
+			cal.set(Calendar.SECOND, 0);
+			Object[] objs = new Object[] {stationsNames[Integer.valueOf(arr[1]) - 1], cal};
+			toAdd.add(objs);
+		}
 	}
 	
 	//public void add

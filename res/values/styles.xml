@@ -15,4 +15,6 @@
 		
 
 	</style>
+	<style name="imageButton_style" parent="@android:style/Widget.ImageButton">
+	</style>
 </resources>

@@ -24,7 +24,7 @@
 		<ListView android:id="@id/android:list"
 	               android:layout_width="fill_parent"
 	               android:layout_height="fill_parent"
-	               android:background="@layout/rounded_background"
+	               android:background="@drawable/rounded_background"
 	               android:cacheColorHint="@color/main_layout_background"
 	               android:divider="@color/separator_color"
 	               android:dividerHeight="1dp"
