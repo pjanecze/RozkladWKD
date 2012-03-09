@@ -12,4 +12,5 @@
 <color name="dark_violet">#8A7476</color>
 <color name="light_green">#EEF7ED</color>
 <color name="light_brown">#9E6305</color>
+<color name="list_cache_color">#00000000</color>
 </resources>

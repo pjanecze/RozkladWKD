@@ -33,6 +33,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -680,6 +681,8 @@ public class SearchResults extends ListActivity implements OnItemClickListener {
 			ListView lv = new ListView(this);
 			lv.setAdapter(new DetailsAdapter(this,
 					selectedSchedule.stationsTimes));
+			
+			lv.setCacheColorHint(this.getResources().getColor(android.R.color.transparent));
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle(R.string.connection_details);

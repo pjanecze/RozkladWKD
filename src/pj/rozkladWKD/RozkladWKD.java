@@ -200,11 +200,11 @@ public class RozkladWKD extends Activity {
 				if(checkConnection())
 					checkScheduleUpdate(false);
 				else
-					Toast.makeText(this, "Brak po³¹czenia z internetem - nie mo¿na sprawdziæ czy jest aktualizacja rozk³adu.", Toast.LENGTH_LONG);
+					Toast.makeText(this, R.string.no_connection_schedule_check, Toast.LENGTH_LONG).show();
 			else if(settings.getBoolean(LOCAL_SCHEDULE, false)
 					&& settings.getBoolean(CHECK_UPDATES, false)
 					&& settings.getBoolean(NEW_VERSION_AVAILABLE, false))
-				Toast.makeText(this, "Istnieje nowa wersja rozk³adu. Aby j¹ pobraæ wciœnij menu/aktualizuj. Je¿eli nie pobierzesz nowej wersji rozk³ad bêdzie dzia³a³ w trybie online.", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, R.string.schedule_new_version, Toast.LENGTH_LONG).show();
 			
 		}
 	}
@@ -619,10 +619,12 @@ public class RozkladWKD extends Activity {
     	
 		@Override
 		protected void onPreExecute() {
+			
 			if(showDialog) {
-				dialog = ProgressDialog.show(RozkladWKD.this, "Rozk³ad WKD", "Sprawdzanie wersji rozk³adu WKD");
+				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+				dialog = ProgressDialog.show(RozkladWKD.this, getString(R.string.app_name), getString(R.string.checking_schedule_version));
 				dialog.setIcon(R.drawable.ic_launcher_wkd);
-				dialog.setTitle("Rozk³ad WKD");
+				dialog.setTitle(getString(R.string.app_name));
 			}
 		}
 
@@ -674,8 +676,10 @@ public class RozkladWKD extends Activity {
 
 		@Override
 		protected void onPostExecute(Boolean result) {
+			
 			if(e != null) {
 				if(showDialog) {
+					setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 					dialog.dismiss();
 				}
 				Error.handle(RozkladWKD.this, "WKD", e);
@@ -683,20 +687,29 @@ public class RozkladWKD extends Activity {
 				if(result != null && result.booleanValue() == false) {
 					//pobierz now¹ wersje
 					if(showDialog) {
+						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
 					}
+					editor = settings.edit();
+					editor.putBoolean(NEW_VERSION_AVAILABLE, true);
+					editor.commit();
 					showDialog(DIALOG_NEW_SCHEDULE);
 				} else if(result != null && result.booleanValue() == true) {
 					if(showDialog) {
+						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
-						Toast.makeText(RozkladWKD.this, "Masz ju¿ najnowsz¹ wersjê rozk³adu WKD.", Toast.LENGTH_LONG).show();
+						Toast.makeText(RozkladWKD.this, getString(R.string.have_newest_schedule), Toast.LENGTH_LONG).show();
 					}
 					
+					editor = settings.edit();
+					editor.putBoolean(NEW_VERSION_AVAILABLE, false);
+					editor.commit();
 				} else {
 					if(showDialog) {
+						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
 					}
-					Toast.makeText(RozkladWKD.this, "Wyst¹pi³ b³¹d podczas sprawdzania czy jest nowa wersja rozk³adu.", Toast.LENGTH_LONG).show();
+					Toast.makeText(RozkladWKD.this, getString(R.string.error_during_version_check), Toast.LENGTH_LONG).show();
 				}
 			}
 		}
@@ -828,9 +841,9 @@ public class RozkladWKD extends Activity {
 					editor.putBoolean(NEW_VERSION_AVAILABLE, false);
 					editor.putInt(DB_VERSION, dbVersion);
 					editor.commit();
-					Toast.makeText(RozkladWKD.this, "Sukces! Uda³o siê zaktualizowaæ rozk³ad!", Toast.LENGTH_LONG).show();
+					Toast.makeText(RozkladWKD.this, getString(R.string.success_schedule_download), Toast.LENGTH_LONG).show();
 				} else {
-					Toast.makeText(RozkladWKD.this, "Wyst¹pi³ b³¹d podczas pobierania rozk³adu. SprawdŸ po³¹czenie i ponów próbê.", Toast.LENGTH_LONG).show();
+					Toast.makeText(RozkladWKD.this, getString(R.string.error_schedule_download), Toast.LENGTH_LONG).show();
 				}
 			}
 		}

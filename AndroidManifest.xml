@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="pj.rozkladWKD" android:versionName="1.2b" android:versionCode="13">
+	package="pj.rozkladWKD" android:versionName="1.4" android:versionCode="14">
 
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"/>
    
@@ -23,7 +23,7 @@
 		<activity android:name="SearchResults" android:theme="@style/searchResults_style" android:configChanges="orientation"></activity>
 		<activity android:name="SettingsActivity"></activity>
 		<activity android:name="com.google.ads.AdActivity"
-              android:configChanges="keyboard|keyboardHidden|orientation"/>
+              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 		<activity android:name="MessageActivity" android:theme="@style/rozkladWKD_style" android:configChanges="orientation"></activity>
 	</application>
 
