@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="pj.rozkladWKD" android:versionName="1.4" android:versionCode="14">
 
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"/>
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="11"/>
    
 	
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -12,16 +12,16 @@
 		android:description="@string/description" android:debuggable="true">
 
 		<activity android:name=".RozkladWKD" android:label="@string/app_name"
-			android:theme="@style/rozkladWKD_style">
+			android:theme="@style/rozkladWKD_style"
+                android:configChanges="orientation">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="Info" android:theme="@style/rozkladWKD_style"
-			android:label="@string/app_name" ></activity>
 		<activity android:name="SearchResults" android:theme="@style/searchResults_style" android:configChanges="orientation"></activity>
-		<activity android:name="SettingsActivity"></activity>
+		<activity android:name="SettingsActivity"
+                android:theme="@style/rozkladWKD_style"></activity>
 		<activity android:name="com.google.ads.AdActivity"
               android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 		<activity android:name="MessageActivity" android:theme="@style/rozkladWKD_style" android:configChanges="orientation"></activity>

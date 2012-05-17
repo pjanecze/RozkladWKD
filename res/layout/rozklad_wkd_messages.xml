@@ -7,39 +7,20 @@
     android:paddingTop="3dp" android:paddingBottom="3dp" android:paddingLeft="1dp" android:paddingRight="1dp">
 
 
-           <RelativeLayout
-               android:id="@+id/write_refres_messages"
-               android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:paddingRight="2dp" >
 
-               <ImageButton
-                   android:id="@+id/user_messages_refresh"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentLeft="true"
-                   android:src="@drawable/ic_change_stations" />
 
                <ImageView
                    android:id="@+id/user_messages_loader"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_centerInParent="true"
+                   android:layout_gravity="center_horizontal"
                    android:visibility="invisible" />
                
-               <ImageButton
-                   android:id="@+id/user_messages_add"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentRight="true"
-                   android:src="@drawable/ic_edit" />
-           </RelativeLayout>
 
            <ListView
                android:id="@id/android:list"
                android:layout_width="fill_parent"
                android:layout_height="wrap_content"
-               android:layout_below="@id/write_refres_messages"
                android:cacheColorHint="@color/main_layout_background"
                android:divider="@color/separator_color"
                android:dividerHeight="1dp"

@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/menu_other_applications"
-    	  android:title="@string/menu_other_apps"/>
-	<item android:id="@+id/menu_contribution"
-    	  android:icon="@drawable/menu_paypal"
-    	  android:title="@string/menu_donate"
-    	  />
-    <item android:id="@+id/menu_rozkladwkd_info"
-          android:icon="@android:drawable/ic_menu_info_details"
-          android:title="@string/menu_info" />
+
+
+    <item android:id="@+id/menu_rozkladwkd_message"
+          android:icon="@drawable/ic_message"
+          android:title="@string/menu_messages"
+          android:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/menu_rozkladwkd_settings"
-          android:icon="@android:drawable/ic_menu_manage"
-          android:title="@string/menu_settings" />
+          android:icon="@drawable/ic_settings"
+          android:title="@string/menu_settings"
+          android:showAsAction="ifRoom|withText"/>
           
     <item android:id="@+id/menu_rozkladwkd_synch"
           android:icon="@drawable/ic_menu_refresh"
-          android:title="@string/menu_synch" />
-    
+          android:title="@string/menu_synch"
+          android:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/menu_rozkladwkd_info"
+          android:icon="@drawable/ic_about"
+          android:title="@string/menu_info"
+          android:showAsAction="ifRoom"
+          />
+
+    <item android:id="@+id/menu_other_applications"
+          android:title="@string/menu_other_apps"
+          android:showAsAction="never"
+            />
+    <item android:id="@+id/menu_contribution"
+          android:title="@string/menu_donate"
+          android:showAsAction="never"
+            />
 </menu>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<style name="rozkladWKD_style" parent="@android:style/Theme.Black.NoTitleBar">
+	<style name="rozkladWKD_style" parent="Theme.Sherlock.Light.DarkActionBar">
 		<item name="android:textSize">14dp</item>
 		<item name="android:typeface">sans</item>
 		<item name="android:textColor">@color/black</item>
 	</style>
-	<style name="searchResults_style" parent="@android:style/Theme.Black">
+	<style name="searchResults_style" parent="Theme.Sherlock.Light.DarkActionBar">
 		<item name="android:textSize">16sp</item>
 		<item name="android:typeface">sans</item>
 

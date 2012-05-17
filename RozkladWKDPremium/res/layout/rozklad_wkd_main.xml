@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="0dp" android:layout_weight="1"
+		android:id="@+id/scroll_view"
+        android:paddingTop="3dp" android:paddingBottom="3dp" android:paddingLeft="1dp" android:paddingRight="1dp"
+        android:layout_marginLeft="@dimen/main_margin"
+        android:layout_marginRight="@dimen/main_margin"
+		>
+
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:orientation="vertical" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView android:id="@+id/from_text"
+					android:layout_alignParentTop="true" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:text="@string/main_from_text"
+					android:paddingBottom="2dp" android:paddingTop="5dp" android:paddingLeft="2dp"/>
+				
+				<LinearLayout 
+				    android:id="@+id/ll1"
+				    android:layout_below="@id/from_text"
+				    android:layout_height="wrap_content"
+				    android:layout_width="match_parent"
+				    android:orientation="horizontal"
+				    android:paddingLeft="3dp"
+				    android:paddingRight="3dp">
+				    <LinearLayout 
+				        android:layout_height="wrap_content"
+				        android:layout_width="0dp"
+				        android:orientation="vertical"
+				        android:layout_weight="1">
+				        
+				        <Spinner android:id="@+id/from_spinner"
+							android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+				        <TextView
+							android:layout_width="fill_parent" android:layout_height="wrap_content"
+							android:text="@string/main_to_text" android:paddingTop="5dp" android:paddingBottom="2dp"/>
+				        <Spinner android:id="@+id/to_spinner"
+							android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+				    </LinearLayout>
+				    <ImageButton android:src="@drawable/ic_change_stations"
+							android:id="@+id/change_station_view1" android:layout_width="wrap_content"
+							android:layout_height="match_parent" 
+							android:layout_gravity="center"
+							style="@style/imageButton_style"/>
+				    
+				</LinearLayout>
+
+				
+				<View
+					android:id="@+id/separator2"
+					android:layout_below="@+id/ll1"
+					android:layout_height="1dp" android:background="@color/separator_color"
+					android:layout_width="fill_parent"/>
+				<TextView android:id="@+id/choose_date_and_time_text"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:text="@string/choose_date_and_time_text" android:paddingTop="5dp" android:paddingBottom="2dp"
+					android:layout_below="@id/separator2" android:paddingLeft="2dp"/>
+				<RelativeLayout
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:id="@+id/date_time_rl"
+					android:layout_below="@id/choose_date_and_time_text"
+					android:paddingLeft="1dp"
+					android:paddingRight="1dp">
+					<Button
+						android:id="@+id/set_time"
+						android:layout_height="wrap_content"
+						android:layout_width="110dp"
+						android:layout_alignParentRight="true"
+							
+					/>	
+					<Button
+						android:id="@+id/set_date"
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:layout_toLeftOf="@id/set_time"
+					/>
+				</RelativeLayout>
+				<RelativeLayout
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:id="@+id/checkbox_rl"
+					android:layout_below="@id/date_time_rl"
+					android:paddingRight="2dp">
+					
+					<CheckBox
+						android:id="@+id/show_now"
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_alignParentRight="true"
+										
+					/>	
+					<TextView
+						android:id="@+id/show_no_text"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_toLeftOf="@id/show_now"
+						android:text="@string/show_now"
+						android:layout_centerVertical="true"
+					/>
+				</RelativeLayout>			
+				
+
+			</RelativeLayout>
+
+	</ScrollView>
+
+
+
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"  android:background="@drawable/abs__ab_bottom_solid_dark_holo"
+                  android:orientation="vertical">
+
+
+
+        <Button
+                android:id="@+id/info_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rozklad_wkd_premium"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                style="@style/Widget.Holo.Button"
+                />
+
+        <Button
+                android:id="@+id/search_button" android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/main_search_text"
+                android:layout_gravity="center_horizontal"
+                android:drawableRight="@drawable/ic_search"
+                android:textColor="@color/white"
+                style="@style/Widget.Holo.Button"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+	<!--
+		
+	-->

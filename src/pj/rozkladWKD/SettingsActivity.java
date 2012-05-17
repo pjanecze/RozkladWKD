@@ -1,12 +1,17 @@
 package pj.rozkladWKD;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.view.MenuItem;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
-public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener{
+public class SettingsActivity extends SherlockPreferenceActivity implements OnSharedPreferenceChangeListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +20,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		
 		Preference dbVersion = getPreferenceScreen().findPreference("db_version");
 		dbVersion.setTitle(getString(R.string.version) + ": " + getPreferenceScreen().getSharedPreferences().getInt(RozkladWKD.DB_VERSION, -1));
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 	
 	
@@ -46,5 +54,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		}
 	}
 
+
+    @Override
+    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+
+            if(item.getItemId() == android.R.id.home) {
+                Intent intent = new Intent(this, RozkladWKD.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+
+        return false;
+    }
 	
 }

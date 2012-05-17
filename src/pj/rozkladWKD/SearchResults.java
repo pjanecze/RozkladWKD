@@ -12,6 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockListActivity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
@@ -53,7 +55,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SearchResults extends ListActivity implements OnItemClickListener {
+public class SearchResults extends SherlockListActivity implements OnItemClickListener {
 
 	private static final String TAG = "SearchResults";
 
@@ -86,16 +88,17 @@ public class SearchResults extends ListActivity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rozklad_wkd_search_results);
 
-		if(android.os.Build.VERSION.SDK_INT >=11) {
-			android.app.ActionBar actionBar = getActionBar();
-		    actionBar.setDisplayHomeAsUpEnabled(true);
-		}
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
 
 		getExtras();
 
-		setTitle(fromSpinnerText + " > " + toSpinnerText);
+		//setTitle(fromSpinnerText + "\n" + toSpinnerText);
+        TextView tv = (TextView) findViewById(R.id.from_to);
+        tv.setText(fromSpinnerText + " - " + toSpinnerText);
+        setTitle(R.string.search_result);
 		if (RozkladWKD.DEBUG_LOG) {
 			Log.i(TAG, "creating search results");
 		}
@@ -442,59 +445,55 @@ public class SearchResults extends ListActivity implements OnItemClickListener {
 		}
 	}
 
-	/**
-	 * Ustawianie elementów Menu
-	 */
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+		com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.searchresults, menu);
 		return true;
 	}
 
-	/**
-	 * Gdy zostanie przyciœniety przycisk z menu
-	 */
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
 		super.onOptionsItemSelected(item);
 
-		switch (item.getItemId()) {
-		case R.id.menu_searchresults_show_all:
-			if (showAllSchedules) {
-				showAllSchedules = false;
-				item.setTitle(R.string.show_all);
-			} else {
-				showAllSchedules = true;
-				item.setTitle(R.string.dont_show_all);
-			}
-			showProgressDialog();
-			new DownloadSchedules().execute();
+        int i = item.getItemId();
+        if (i == R.id.menu_searchresults_show_all) {
+            if (showAllSchedules) {
+                showAllSchedules = false;
+                item.setTitle(R.string.show_all);
+            } else {
+                showAllSchedules = true;
+                item.setTitle(R.string.dont_show_all);
+            }
+            showProgressDialog();
+            new DownloadSchedules().execute();
 
-			return true;
-		case R.id.menu_searchresults_refresh:
-			showProgressDialog();
-			new DownloadSchedules().execute();
+            return true;
+        } else if (i == R.id.menu_searchresults_refresh) {
+            showProgressDialog();
+            new DownloadSchedules().execute();
 
-			return true;
-		case R.id.menu_searchresults_info:
-			AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-			builder1.setMessage(getString(R.string.info_text));
+            return true;
+        } else if (i == R.id.menu_searchresults_info) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage(getString(R.string.info_text));
 
-			builder1.setIcon(R.drawable.ic_launcher_wkd);
-			builder1.setTitle(getString(R.string.info));
-			builder1.show();
-			return true;
-		}
+            builder1.setIcon(R.drawable.ic_launcher_wkd);
+            builder1.setTitle(getString(R.string.info));
+            builder1.show();
+            return true;
+        }
 		
-		if(android.os.Build.VERSION.SDK_INT >=11) {
-			if(item.getItemId() == android.R.id.home) {
-				Intent intent = new Intent(this, RozkladWKD.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				finish();
-			}
-		}
+
+        if(item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(this, RozkladWKD.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
+
 		return false;
 	}
 

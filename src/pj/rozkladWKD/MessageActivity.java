@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.net.Uri;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockListActivity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
@@ -42,12 +45,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MessageActivity extends ListActivity{
+public class MessageActivity extends SherlockListActivity{
 
 	private static final String TAG = "MessageActivity";
-	
-	private ImageButton refreshMessagesButton;
-	private ImageButton writeNewMessageButton;
 	
 	ProgressDialog uploadDialog;
 	
@@ -69,6 +69,8 @@ public class MessageActivity extends ListActivity{
 	AnimationDrawable messageLoaderAnimation;
 	
 	private static SimpleDateFormat formatterDate;
+
+    private boolean refreshButtonClickable = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,14 +79,11 @@ public class MessageActivity extends ListActivity{
 		setContentView(R.layout.rozklad_wkd_messages);
 		
 		setTitle(R.string.messages);
-		
-		if(android.os.Build.VERSION.SDK_INT >=11) {
-			android.app.ActionBar actionBar = getActionBar();
-		    actionBar.setDisplayHomeAsUpEnabled(true);
-		}
-		
-		refreshMessagesButton = (ImageButton) findViewById(R.id.user_messages_refresh);
-		writeNewMessageButton = (ImageButton) findViewById(R.id.user_messages_add);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+
 		
 		messageLoader = (ImageView) findViewById(R.id.user_messages_loader);
         messageLoader.setBackgroundResource(R.layout.loader);
@@ -93,29 +92,10 @@ public class MessageActivity extends ListActivity{
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
 		
 		startDownloadingAnimation();
-		refreshMessagesButton.setClickable(false);
+		refreshButtonClickable = false;
+        invalidateOptionsMenu();
 		new DownloadMessages().execute(DownloadMessages.GET_MESSAGES);
-		
-		
-		refreshMessagesButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				startDownloadingAnimation();
-				refreshMessagesButton.setClickable(false);
-				new DownloadMessages().execute(DownloadMessages.GET_MESSAGES);
-			}
-		});
-		
-		writeNewMessageButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				showAddMessageDialog();
-				
-			}
-		});
+
 	}
 	
 	private void setListAdapter() {
@@ -375,7 +355,8 @@ public class MessageActivity extends ListActivity{
 				case GET_MESSAGES:
 					setListAdapter();
 					stopDownloadingAnimation();
-					refreshMessagesButton.setClickable(true);
+					refreshButtonClickable = true;
+                    invalidateOptionsMenu();
 					break;
 				case SEND_MESSAGE:
 					hideProgressDialog();
@@ -401,15 +382,53 @@ public class MessageActivity extends ListActivity{
 	 }
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//home buton
-		Intent intent = new Intent(this, RozkladWKD.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(intent);
-		finish();
-		return true;
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+        if(item.getItemId() == R.id.menu_add_message) {
+            showAddMessageDialog();
+            return true;
+        } else if(item.getItemId() == R.id.menu_refresh_messages) {
+            startDownloadingAnimation();
+            refreshButtonClickable = false;
+            item.setEnabled(false);
+            new DownloadMessages().execute(DownloadMessages.GET_MESSAGES);
+            return true;
+        } else if(item.getItemId() == android.R.id.home) {
+            //home buton
+            Intent intent = new Intent(this, RozkladWKD.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
+
+		return super.onOptionsItemSelected(item);
 	}
-	
-	
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+
+
+        com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
+        inflater.inflate(R.menu.messages, menu);
+
+        com.actionbarsherlock.view.MenuItem item = menu.findItem(R.id.menu_refresh_messages);
+        if(refreshButtonClickable)
+            item.setEnabled(true);
+        else
+            item.setEnabled(false);
+
+        return true;
+
+
+
+    }
+
+
+
+
+
 	
 }

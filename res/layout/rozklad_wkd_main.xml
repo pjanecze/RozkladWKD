@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:orientation="vertical" android:paddingTop="3dp" android:paddingBottom="3dp" android:paddingLeft="1dp" android:paddingRight="1dp">
+    android:orientation="vertical" >
 	<ScrollView android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:layout_weight="1" 
+		android:layout_height="0dp" android:layout_weight="1"
 		android:id="@+id/scroll_view"
+        android:paddingTop="3dp" android:paddingBottom="3dp" android:paddingLeft="1dp" android:paddingRight="1dp"
+        android:layout_marginLeft="@dimen/main_margin"
+        android:layout_marginRight="@dimen/main_margin"
 		>
 
 			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:orientation="vertical" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:background="@drawable/rounded_background">
+				android:layout_height="wrap_content" >
 
 				<TextView android:id="@+id/from_text"
 					android:layout_alignParentTop="true" android:layout_width="fill_parent"
@@ -117,30 +120,36 @@
 			</RelativeLayout>
 
 	</ScrollView>
-	
-	
-	<RelativeLayout android:layout_width="fill_parent"
-		android:layout_height="90dp" android:layout_weight="1" android:background="@drawable/rounded_button_background" >
 
 
 
+    <LinearLayout android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"  android:background="@drawable/abs__ab_bottom_solid_dark_holo"
+            android:orientation="vertical">
 
-		
-		<ImageButton
-			android:src="@drawable/ic_dialog_email"
-			android:id="@+id/show_messages"
-			android:layout_width="60dp"
-			android:layout_height="60dp"
-			android:layout_alignParentRight="true"
-			/>
+
+
+        <Button
+                android:id="@+id/info_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rozklad_wkd_premium"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                style="@style/Widget.Holo.Button"
+                />
+
 		<Button
 			android:id="@+id/search_button" android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:text="@string/main_search_text" 
-			android:layout_toLeftOf="@+id/show_messages"
-			android:gravity="center_horizontal|center_vertical"/>
+			android:layout_width="wrap_content"
+			android:text="@string/main_search_text"
+			android:layout_gravity="center_horizontal"
+                android:drawableRight="@drawable/ic_search"
+                android:textColor="@color/white"
+                style="@style/Widget.Holo.Button"/>
 
-	</RelativeLayout>
+
+	</LinearLayout>
 
 </LinearLayout>
 

@@ -13,6 +13,13 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.content.res.Configuration;
+import android.support.v4.view.MenuCompat;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.actionbarsherlock.ActionBarSherlock;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.*;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
@@ -60,7 +67,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class RozkladWKD extends Activity {
+
+
+public class RozkladWKD extends SherlockActivity {
 
 	private static final String TAG = "MainActivity";
 
@@ -106,15 +115,11 @@ public class RozkladWKD extends Activity {
 	
 	private DownloadSchedule downloader = null;
 	
-	
-	/**
-	 * Spinnery: od której stacji, do której stacji
-	 */
+
 	private Spinner fromSpinner, toSpinner;
 	private Button searchButton, dateButton, timeButton;
 	private ImageButton changeStationsButton1;
-	
-	private ImageButton showMessagesButton;
+
 	private CheckBox showNowCheckbox;
 	private TextView chooseDateTimeTextView;
 	
@@ -132,7 +137,7 @@ public class RozkladWKD extends Activity {
 	private int mHour;
 	private ConnectivityManager connectivityManager;
 	
-	private Menu menu = null;
+	private com.actionbarsherlock.view.Menu menu = null;
 	
 	/**
 	 * Tworzenie activity
@@ -140,6 +145,7 @@ public class RozkladWKD extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		setContentView(R.layout.rozklad_wkd_main);
 
 		if(savedInstanceState!=null) {
@@ -147,7 +153,7 @@ public class RozkladWKD extends Activity {
 
         }
 		
-		// przypisanie spinnerów
+		// przypisanie spinnerw
 		fromSpinner = (Spinner) findViewById(R.id.from_spinner);
 		toSpinner = (Spinner) findViewById(R.id.to_spinner);
 
@@ -156,8 +162,7 @@ public class RozkladWKD extends Activity {
 		dateButton = (Button) findViewById(R.id.set_date);
 		timeButton = (Button) findViewById(R.id.set_time);
 		changeStationsButton1 = (ImageButton) findViewById(R.id.change_station_view1);
-		
-		showMessagesButton = (ImageButton) findViewById(R.id.show_messages);
+
 		showNowCheckbox= (CheckBox) findViewById(R.id.show_now);
 		choosenDateTime = Calendar.getInstance();
 		mYear = choosenDateTime.get(Calendar.YEAR);
@@ -165,7 +170,17 @@ public class RozkladWKD extends Activity {
         mDay = choosenDateTime.get(Calendar.DAY_OF_MONTH);
         mHour = choosenDateTime.get(Calendar.HOUR_OF_DAY);
         mMinute = choosenDateTime.get(Calendar.MINUTE);
-        
+
+        Button premium = (Button) findViewById(R.id.info_button);
+
+        if(premium != null) {
+            premium.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+        }
         
         
         
@@ -189,8 +204,7 @@ public class RozkladWKD extends Activity {
 		
 	}
 
-	
-	private void atFirstStart() {
+    private void atFirstStart() {
 		if(!settings.contains(LOCAL_SCHEDULE)) {
 			showDialog(DIALOG_LOCAL_SCHEDULE);
 		} else {
@@ -207,6 +221,7 @@ public class RozkladWKD extends Activity {
 				Toast.makeText(this, R.string.schedule_new_version, Toast.LENGTH_LONG).show();
 			
 		}
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 	}
 	private void checkScheduleUpdate(boolean showDialog){
 		
@@ -242,8 +257,7 @@ public class RozkladWKD extends Activity {
 			public void onClick(View v) {
 				Long fromSpinnerValue = fromSpinner.getSelectedItemId();
 				Long toSpinnerValue = toSpinner.getSelectedItemId();
-				
-				/* Jeœli znajduje siê na ostatniej stacji nie mo¿e wybrac kierunku dla tej stacji */
+
 				if(fromSpinnerValue == toSpinnerValue || (fromSpinnerValue ==27 && toSpinnerValue == 2) ||
 						(fromSpinnerValue == 21 && toSpinnerValue ==1)){
 					showAlertDialog(R.string.station_pick_error_title, R.string.station_pick_error_mess, R.string.positive_button);
@@ -316,17 +330,7 @@ public class RozkladWKD extends Activity {
 			}
 		});
 		
-		
-		showMessagesButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(RozkladWKD.this, MessageActivity.class);
-				startActivity(intent);
-		
-			}
-		});
-		
+
 	}
 
 	private void showHideDateTimeButtons(boolean isChecked) {
@@ -343,11 +347,13 @@ public class RozkladWKD extends Activity {
 	}
 	
 	/**
-	 * Ustawianie elementów Menu
+	 * Ustawianie elementï¿½w Menu
 	 */
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+
+
+		com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
 	    inflater.inflate(R.menu.rozkladwkd, menu);
 	    this.menu = menu;
 	    if(!settings.getBoolean(LOCAL_SCHEDULE, false)) {
@@ -360,45 +366,45 @@ public class RozkladWKD extends Activity {
 
 	
 
-	/**
-	 * Gdy zostanie przyciœniety przycisk z menu
-	 */
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
 
-		switch (item.getItemId()) {
-		case R.id.menu_rozkladwkd_info:
-			showDialog(DIALOG_INFO);
-			
-			return true;
-		case R.id.menu_contribution:
-			Intent i = new Intent(Intent.ACTION_VIEW, 
-		    Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BTBYU7GXRE75N&lc=PL&item_name=Support%20for%20application%20development%20%2d%20Pawe%c5%82%20Janeczek&currency_code=PLN&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"));
-			startActivity(i);
-			return true;
-		case R.id.menu_other_applications:
-			final Intent i1 = new Intent(Intent.ACTION_VIEW, 
-		    Uri.parse("market://search?q=pub:%22Pawe³%20Janeczek%22"));
-			startActivity(i1);
-			return true;
-		case R.id.menu_rozkladwkd_settings:
-			final Intent intent = new Intent(RozkladWKD.this, SettingsActivity.class);
-			startActivity(intent);
-			return true;
-		case R.id.menu_rozkladwkd_synch:
-			checkScheduleUpdate(true);
-		default:
-			return super.onOptionsItemSelected(item);
-		}
+        int i2 = item.getItemId();
+        if (i2 == R.id.menu_rozkladwkd_info) {
+            showDialog(DIALOG_INFO);
+
+            return true;
+        } else if (i2 == R.id.menu_contribution) {
+            Intent i = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BTBYU7GXRE75N&lc=PL&item_name=Support%20for%20application%20development%20%2d%20Pawe%c5%82%20Janeczek&currency_code=PLN&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"));
+            startActivity(i);
+            return true;
+        } else if (i2 == R.id.menu_other_applications) {
+            final Intent i1 = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(getString(R.string.my_applications)));
+            startActivity(i1);
+            return true;
+        } else if (i2 == R.id.menu_rozkladwkd_settings) {
+            final Intent intent = new Intent(RozkladWKD.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (i2 == R.id.menu_rozkladwkd_synch) {
+            checkScheduleUpdate(true);
+
+            return super.onOptionsItemSelected(item);
+        } else if (i2 == R.id.menu_rozkladwkd_message) {
+            Intent intent = new Intent(RozkladWKD.this, MessageActivity.class);
+            startActivity(intent);
+            return  true;
+        } else {
+                return super.onOptionsItemSelected(item);
+        }
 		
 	}
 
 
 	
-	/*
-	 * Metoda do tworzenia alertu: pobiera tytul, wiadomosc i tekst przycisku pozytywnego (jako liczby R.string.*)
-	 * Jeœli nie chcesz tytulu b¹dz wiadomoœci to wpisujesz -1.
-	 */
+
 	void showAlertDialog(int title, int message, int positiveButtonText){
 		
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -422,9 +428,7 @@ public class RozkladWKD extends Activity {
 
 	
 	
-	/**
-	 * Ustawianie adapterów dla spinnerów
-	 */
+
 	private void populateSpinners() {
 
 		ArrayAdapter<CharSequence> from_aa, to_aa;
@@ -532,7 +536,7 @@ public class RozkladWKD extends Activity {
 						}
 					});
 	    	builder1.setIcon(R.drawable.ic_launcher_wkd);
-	    	builder1.setTitle("Rozk¸ad WKD");
+	    	builder1.setTitle(R.string.app_name);
 	    	return builder1.create();
 	    case DIALOG_NEW_SCHEDULE:
 	    	editor = settings.edit();
@@ -554,12 +558,12 @@ public class RozkladWKD extends Activity {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							Toast.makeText(RozkladWKD.this, "Je¿eli chcesz wy³¹czyæ automatyczne sprawdzanie aktualizacji rozk³adu przejdŸ do ustawieñ.", Toast.LENGTH_LONG).show();
+							Toast.makeText(RozkladWKD.this, getString(R.string.update_info), Toast.LENGTH_LONG).show();
 							
 						}
 					});
 	    	builder2.setIcon(R.drawable.ic_launcher_wkd);
-	    	builder2.setTitle("Rozk³ad WKD");
+	    	builder2.setTitle(R.string.app_name);
 	    	return builder2.create();
 	    			
 	    }
@@ -685,7 +689,7 @@ public class RozkladWKD extends Activity {
 				Error.handle(RozkladWKD.this, "WKD", e);
 			} else {
 				if(result != null && result.booleanValue() == false) {
-					//pobierz now¹ wersje
+					//pobierz nowï¿½ wersje
 					if(showDialog) {
 						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
