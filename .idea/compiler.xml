@@ -7,6 +7,7 @@
       <directory url="file://$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/RozkladWKDPremium/gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/../ActionBarSherlock/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/RozkladWKDFree/gen" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>

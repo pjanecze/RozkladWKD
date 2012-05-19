@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
     android:orientation="vertical" >
 	<ScrollView android:layout_width="fill_parent"
@@ -104,18 +103,8 @@
 						android:layout_centerVertical="true"
 					/>
 				</RelativeLayout>			
-				
-				<RelativeLayout
-					android:layout_height="wrap_content"
-					android:layout_width="fill_parent"
-					android:layout_below="@id/checkbox_rl">
-					<com.google.ads.AdView android:id="@+id/adView"
-	                         android:layout_width="wrap_content"
-	                         android:layout_height="wrap_content"
-	                         ads:adUnitId="a14e08ee8b23f82"
-	                         ads:adSize="BANNER"
-	                         ads:loadAdOnCreate="true"/>
-                </RelativeLayout>
+
+
 
 			</RelativeLayout>
 
@@ -126,19 +115,10 @@
     <LinearLayout android:layout_width="fill_parent"
                     android:layout_height="wrap_content"  android:background="@drawable/abs__ab_bottom_solid_dark_holo"
             android:orientation="vertical">
-
-
-
-        <Button
-                android:id="@+id/info_button"
-                android:layout_width="wrap_content"
+        <include
+                layout="@layout/ad_baner"
                 android:layout_height="wrap_content"
-                android:text="@string/rozklad_wkd_premium"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"
-                style="@style/Widget.Holo.Button"
-                />
-
+                android:layout_width="fill_parent"/>
 		<Button
 			android:id="@+id/search_button" android:layout_height="wrap_content"
 			android:layout_width="wrap_content"

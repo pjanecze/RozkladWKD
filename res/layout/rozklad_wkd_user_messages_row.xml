@@ -5,30 +5,40 @@
     android:padding="6dip"
     android:orientation="vertical"
     android:background="@color/light_green">
-    <RelativeLayout
+    <LinearLayout
     	android:orientation="horizontal"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     >
+        <View
+                android:id="@+id/premium"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:background="@drawable/ic_star"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"/>
+        <TextView
+                android:id="@+id/message_user"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:text="test"
+                />
+
     	<TextView
 	    	android:id="@+id/message_date"
-	    	android:layout_height="fill_parent"
-	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_width="0dp"
+            android:layout_weight="1"
 	    	android:textSize="14sp"
 	    	android:textColor="@color/black"
-	    	android:layout_alignParentRight="true"
+	    	android:gravity="right"
+
 	    />
-	    <TextView
-	        android:id="@+id/message_user"
-	        android:layout_height="fill_parent"
-	        android:layout_width="fill_parent"
-	        android:layout_marginRight="6dip"
-	        android:textSize="14sp"
-	        android:textColor="@color/black"
-	        android:layout_toLeftOf="@id/message_date"
-	        />
+
 	    
- 	</RelativeLayout>
+ 	</LinearLayout>
     <TextView
  		android:id="@+id/message_text"
  		android:layout_width="fill_parent"

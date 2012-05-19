@@ -36,22 +36,27 @@ public class MessageAdapter extends ArrayAdapter<UserMessage>{
 	            if (o != null) {
 
 	                	
-	                    TextView user = (TextView) v.findViewById(R.id.message_user);
-	                    TextView text = (TextView) v.findViewById(R.id.message_text);
-	                    
-	                    TextView date = (TextView) v.findViewById(R.id.message_date);              
+                    TextView user = (TextView) v.findViewById(R.id.message_user);
+                    TextView text = (TextView) v.findViewById(R.id.message_text);
+
+                    TextView date = (TextView) v.findViewById(R.id.message_date);
+                    View premium = v.findViewById(R.id.premium);
 	                   
-	                    if (user != null) {
-	                    	user.setText(o.fromWho);                          
-	                    }
-	                    if(text != null) {
-	                    	text.setText(o.message);
-	                    	Linkify.addLinks(text, Linkify.ALL);
-	                    }
-	                    if(date != null) {
-	                    	date.setText(sdf.format(o.time.getTime()));
-	                    }
-	                    
+                    if (user != null) {
+                        user.setText(o.fromWho);
+                    }
+                    if(text != null) {
+                        text.setText(o.message);
+                        Linkify.addLinks(text, Linkify.ALL);
+                    }
+                    if(date != null) {
+                        date.setText(sdf.format(o.time.getTime()));
+                    }
+
+                    if(premium != null) {
+                        premium.setVisibility(o.premium ? View.VISIBLE : View.GONE);
+//                        premium.setVisibility(View.VISIBLE);
+                    }
 	                    
 	            }
 	            return v;

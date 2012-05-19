@@ -3,7 +3,7 @@
 	<style name="rozkladWKD_style" parent="Theme.Sherlock.Light.DarkActionBar">
 		<item name="android:textSize">14dp</item>
 		<item name="android:typeface">sans</item>
-		<item name="android:textColor">@color/black</item>
+		<!--<item name="android:textColor">@color/black</item>-->
 	</style>
 	<style name="searchResults_style" parent="Theme.Sherlock.Light.DarkActionBar">
 		<item name="android:textSize">16sp</item>
@@ -11,10 +11,12 @@
 
 	</style>
 	<style name="list_view_style" >
-		<item name="android:textColor">@color/very_dark_grey</item>
+		<!--<item name="android:textColor">@color/very_dark_grey</item>-->
 		
 
 	</style>
 	<style name="imageButton_style" parent="@android:style/Widget.ImageButton">
 	</style>
+
+    <style name="dialogTheme" parent="Theme.Sherlock.Light.Dialog"></style>
 </resources>

@@ -5,24 +5,20 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
 >
-	<RelativeLayout
-					android:layout_height="wrap_content"
-					android:layout_width="fill_parent"
-					android:id="@+id/admob">
-		<com.google.ads.AdView android:id="@+id/adView"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      ads:adUnitId="a14e08ee8b23f82"
-                      ads:adSize="BANNER"
-                      ads:loadAdOnCreate="true"/>
-	</RelativeLayout>
+    <include
+        layout="@layout/ad_baner"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:id="@+id/admob"/>
 	<RelativeLayout
 					android:layout_height="0dp"
 					android:layout_width="fill_parent"
                     android:layout_weight="1"
 					android:layout_below="@id/admob"
                     android:paddingLeft="2dp" android:paddingRight="2dp"
-                    android:layout_margin="@dimen/main_margin">
+                    android:paddingTop="3dp" android:paddingBottom="3dp"
+                    android:layout_marginLeft="@dimen/main_margin"
+                    android:layout_marginRight="@dimen/main_margin">
 		<ListView android:id="@id/android:list"
 	               android:layout_width="fill_parent"
 	               android:layout_height="fill_parent"

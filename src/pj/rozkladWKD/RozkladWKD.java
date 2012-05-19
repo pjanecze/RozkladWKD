@@ -73,8 +73,8 @@ public class RozkladWKD extends SherlockActivity {
 
 	private static final String TAG = "MainActivity";
 
-	public static final Boolean DEBUG_LOG = false;
-	public static final String APP_VERSION = "10"; 
+	public static final Boolean DEBUG_LOG = true;
+	public static final String APP_VERSION = "16";
 	
 	
 	
@@ -98,6 +98,7 @@ public class RozkladWKD extends SherlockActivity {
 	public static final String DB_VERSION = "db_version";
 	public static final String NEW_VERSION_AVAILABLE = "new_version";
 	public static final String LOCAL_SCHEDULE_CHANGED = "ch_upd_changed";
+    public static final String SHOW_PREMIUM_DIALOG = "sh_premium_dialog";
 	
 	
 	public static final String YEAR = "YEAR";
@@ -171,16 +172,6 @@ public class RozkladWKD extends SherlockActivity {
         mHour = choosenDateTime.get(Calendar.HOUR_OF_DAY);
         mMinute = choosenDateTime.get(Calendar.MINUTE);
 
-        Button premium = (Button) findViewById(R.id.info_button);
-
-        if(premium != null) {
-            premium.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-        }
         
         
         
@@ -361,6 +352,9 @@ public class RozkladWKD extends SherlockActivity {
 	    } else {
 	    	menu.findItem(R.id.menu_rozkladwkd_synch).setVisible(true);
 	    }
+        if(getResources().getBoolean(R.bool.premium)) {
+            menu.findItem(R.id.menu_contribution).setVisible(false);
+        }
 		return true;
 	}
 
@@ -376,7 +370,7 @@ public class RozkladWKD extends SherlockActivity {
             return true;
         } else if (i2 == R.id.menu_contribution) {
             Intent i = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BTBYU7GXRE75N&lc=PL&item_name=Support%20for%20application%20development%20%2d%20Pawe%c5%82%20Janeczek&currency_code=PLN&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"));
+                    Uri.parse(getString(R.string.premium_url)));
             startActivity(i);
             return true;
         } else if (i2 == R.id.menu_other_applications) {

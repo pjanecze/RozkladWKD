@@ -6,4 +6,5 @@ public class UserMessage {
 	public String fromWho;
 	public String message;
 	public Calendar time;
+    public boolean premium;
 }

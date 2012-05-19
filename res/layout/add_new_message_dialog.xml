@@ -18,10 +18,11 @@
 				android:maxLines="3"
 				android:lines="3"
 				android:gravity="top"
-				android:inputType="textCapSentences|textMultiLine"
+				android:inputType="textCapSentences|textMultiLine|textAutoComplete|textAutoCorrect"
 				android:maxLength="255" android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:hint="@string/message" />
+				android:hint="@string/message"
+                    />
 				
 			
 		</LinearLayout>

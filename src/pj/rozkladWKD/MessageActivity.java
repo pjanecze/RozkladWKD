@@ -230,6 +230,7 @@ public class MessageActivity extends SherlockListActivity{
 	            
 	            message.message = obj.getString("message");
 	            message.fromWho = obj.getString("USER");
+                message.premium = (obj.getString("premium").equals("Y"));
 	            
 	            messagesList.add(message);
 			}
@@ -247,6 +248,7 @@ public class MessageActivity extends SherlockListActivity{
 	    nameValuePairs.add(new BasicNameValuePair("requestType", "SEND_MESSAGE"));
 	    nameValuePairs.add(new BasicNameValuePair("username", username));
 	    nameValuePairs.add(new BasicNameValuePair("message", mess));
+        nameValuePairs.add(new BasicNameValuePair("premium", getResources().getBoolean(R.bool.premium) ? "Y" : "N"));
 	    
 	    if(RozkladWKD.DEBUG_LOG) {
 		    Log.i(TAG, "send message from server");

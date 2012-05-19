@@ -12,7 +12,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import android.support.v4.app.FragmentManager;
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListActivity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -54,8 +56,9 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import pj.rozkladWKD.pj.rozkladWKD.ui.BuyPremiumFragment;
 
-public class SearchResults extends SherlockListActivity implements OnItemClickListener {
+public class SearchResults extends SherlockFragmentActivity implements OnItemClickListener {
 
 	private static final String TAG = "SearchResults";
 
@@ -83,10 +86,14 @@ public class SearchResults extends SherlockListActivity implements OnItemClickLi
 	SharedPreferences settings;
 	SharedPreferences.Editor editor;
 
+    ListView list;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rozklad_wkd_search_results);
+
+        list = (ListView) findViewById(android.R.id.list);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -106,7 +113,8 @@ public class SearchResults extends SherlockListActivity implements OnItemClickLi
 		showProgressDialog();
 		new DownloadSchedules().execute();
 
-		getListView().setOnItemClickListener(this);
+
+		list.setOnItemClickListener(this);
 	}
 
 	private void showProgressDialog() {
@@ -159,7 +167,8 @@ public class SearchResults extends SherlockListActivity implements OnItemClickLi
 			scheduleAdapter = new ScheduleAdapter(this,
 					R.layout.rozklad_wkd_search_results_row, schedulesList);
 
-			setListAdapter(scheduleAdapter);
+
+			list.setAdapter(scheduleAdapter);
 		}
 	}
 
@@ -543,11 +552,22 @@ public class SearchResults extends SherlockListActivity implements OnItemClickLi
 			if (e != null) {
 				Error.handle(SearchResults.this, "WKD", e);
 			}
+            showPremiumDialog();
 		}
 
 	}
 
-	@Override
+    private void showPremiumDialog() {
+
+        if(!getResources().getBoolean(R.bool.premium) && settings.getBoolean(RozkladWKD.SHOW_PREMIUM_DIALOG, true)) {
+            FragmentManager fm = getSupportFragmentManager();
+            BuyPremiumFragment dialog = new BuyPremiumFragment();
+            dialog.show(fm, "fragment_buy_premium");
+        }
+
+    }
+
+    @Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
@@ -678,6 +698,7 @@ public class SearchResults extends SherlockListActivity implements OnItemClickLi
 
 		if (isLocalSchedule && !isNewVersionAvailable) {
 			ListView lv = new ListView(this);
+            lv.setBackgroundColor(getResources().getColor(R.color.white));
 			lv.setAdapter(new DetailsAdapter(this,
 					selectedSchedule.stationsTimes));
 			
