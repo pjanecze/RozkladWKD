@@ -3,27 +3,17 @@ package pj.rozkladWKD;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import java.util.Date;
 
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
 
-import android.content.res.Configuration;
-import android.support.v4.view.MenuCompat;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.actionbarsherlock.ActionBarSherlock;
+
 import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.*;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,9 +21,6 @@ import com.pj.lib.errorhandler.Error;
 
 
 
-
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -46,12 +33,10 @@ import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 
 import android.content.pm.ActivityInfo;
-import android.content.res.Resources.NotFoundException;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
