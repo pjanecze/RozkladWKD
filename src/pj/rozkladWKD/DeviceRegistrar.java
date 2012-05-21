@@ -55,6 +55,7 @@ public class DeviceRegistrar {
                     post.add(new BasicNameValuePair("requestType", "REGISTER_PUSH"));
                     post.add(new BasicNameValuePair("deviceId", DeviceIdGenerator.getDeviceId()));
                     post.add(new BasicNameValuePair("clientRegistrationId", deviceRegistrationID));
+                    post.add(new BasicNameValuePair("productId", context.getString(R.string.productId)));
 
                     JSONObject result = HttpClient.SendHttpPost(post);
 
@@ -90,6 +91,7 @@ public class DeviceRegistrar {
                     post.add(new BasicNameValuePair("requestType", "UNREGISTER_PUSH"));
                     post.add(new BasicNameValuePair("deviceId", DeviceIdGenerator.getDeviceId()));
                     post.add(new BasicNameValuePair("clientRegistrationId", deviceRegistrationID));
+                    post.add(new BasicNameValuePair("productId", context.getString(R.string.productId)));
 
                     JSONObject result = HttpClient.SendHttpPost(post);
                 } catch (Exception e) {

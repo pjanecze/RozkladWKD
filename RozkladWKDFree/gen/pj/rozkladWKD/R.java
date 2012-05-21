@@ -1131,6 +1131,7 @@ containing a value of this type.
         public static final int premium_info=0x7f050058;
         public static final int premium_title=0x7f05005a;
         public static final int premium_url=0x7f05005d;
+        public static final int productId=0x7f050063;
         public static final int push_notifications=0x7f050060;
         public static final int refresh=0x7f050027;
         public static final int rozklad_wkd_premium=0x7f050055;

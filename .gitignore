@@ -288,3 +288,9 @@
 /classes/production/RozkladWKDFree/RozkladWKDFree.apk.res.release
 /classes/production/RozkladWKDPremium/RozkladWKDPremium.apk.res.release
 /classes/production/RozkladWKDPremium/RozkladWKDPremium.apk.unsigned
+RozkladWKDFree/gen
+RozkladWKDPremium/gen
+*.dex
+classes.jar
+*.res
+*.unaligned

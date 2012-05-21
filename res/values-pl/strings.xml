@@ -108,7 +108,7 @@
     <string name="premium_url">"https://play.google.com/store/apps/details?id=pj.rozkladWKD.premium"</string>
     <string name="menu_premium">Premium</string>
 
-    <string name="turn_on_push_message">Czy chcesz włączyć wiadomości push?\nDzięki nim będziesz automatycznie powiadamiany o nowych wiadomościach oraz zdarzeniach związanymi z WKD.</string>
+    <string name="turn_on_push_message">Czy chcesz włączyć wiadomości push?\n\nDzięki nim będziesz automatycznie powiadamiany o nowych wiadomościach oraz zdarzeniach związanymi z WKD.</string>
     <string name="push_notifications">Notyfikacje</string>
 
     <string name="title_push">Notyfikacje</string>

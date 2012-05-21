@@ -214,9 +214,9 @@ public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFr
 				Toast.makeText(this, R.string.schedule_new_version, Toast.LENGTH_LONG).show();
 
 
-            if(settings.getBoolean(Prefs.TURN_ON_DIALOG_SHOWN, false)) {
+            if(settings.getBoolean(Prefs.TURN_ON_DIALOG_SHOWN, true)) {
                 editor = settings.edit();
-                editor.putBoolean(Prefs.TURN_ON_DIALOG_SHOWN, true);
+                editor.putBoolean(Prefs.TURN_ON_DIALOG_SHOWN, false);
                 editor.commit();
 
                 FragmentManager fm = getSupportFragmentManager();
@@ -901,6 +901,8 @@ public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFr
 				}
 			}
 		}
+
+        ((RozkladWKDApplication) getApplication()).registerPushes();
 		
 	}
 	

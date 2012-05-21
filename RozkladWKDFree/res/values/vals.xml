@@ -1,3 +1,4 @@
 <resources>
     <bool name="premium">false</bool>
+    <string name="productId">FR</string>
 </resources>

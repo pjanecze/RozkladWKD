@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockDialogFragment;
 import pj.rozkladWKD.R;
 
@@ -39,5 +41,10 @@ public class TurnOnPushFragment extends SherlockDialogFragment{
                     }
                 });
         return  builder.create();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }
