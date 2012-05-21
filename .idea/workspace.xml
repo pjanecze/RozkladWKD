@@ -13,44 +13,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40c407a4-a9b0-413e-81ed-6c5aa05ad419" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RozkladWKDFree/res/drawable/icon.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/libs/android-support-v4.jar" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/libs/joda-time-2.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RozkladWKDFree/RozkladWKDFree.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RozkladWKDFree/project.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RozkladWKDFree/res/values/vals.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RozkladWKDPremium/res/layout/ad_baner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/ad_baner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fragment_buy_premium.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-pl/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-xlarge/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/BuyPremiumFragment.java" />
-      <change type="DELETED" beforePath="C:\Users\pawel\Google Drive\development\RozkladWKD\RozkladWKDPremium\res\layout\rozklad_wkd_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\pawel\Google Drive\development\RozkladWKD\RozkladWKDPremium\res\layout\rozklad_wkd_search_results.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dodatki/1.png" afterPath="$PROJECT_DIR$/dodatki/1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dodatki/2.png" afterPath="$PROJECT_DIR$/dodatki/2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dodatki/3.png" afterPath="$PROJECT_DIR$/dodatki/3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/google/android/c2dm/C2DMBaseReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/google/android/c2dm/C2DMBroadcastReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/google/android/c2dm/C2DMessaging.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/C2DMReceiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/DeviceIdGenerator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/DeviceRegistrar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/Prefs.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKDApplication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/TurnOnPushFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rozklad WKD.iml" afterPath="$PROJECT_DIR$/Rozklad WKD.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml" afterPath="$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RozkladWKDFree/gen/pj/rozkladWKD/R.java" afterPath="$PROJECT_DIR$/RozkladWKDFree/gen/pj/rozkladWKD/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml" afterPath="$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RozkladWKDPremium/gen/pj/rozkladWKD/premium/R.java" afterPath="$PROJECT_DIR$/RozkladWKDPremium/gen/pj/rozkladWKD/premium/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/pj/rozkladWKD/R.java" afterPath="$PROJECT_DIR$/gen/pj/rozkladWKD/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/add_new_message_dialog.xml" afterPath="$PROJECT_DIR$/res/layout/add_new_message_dialog.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/rozklad_wkd_main.xml" afterPath="$PROJECT_DIR$/res/layout/rozklad_wkd_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/rozklad_wkd_search_results.xml" afterPath="$PROJECT_DIR$/res/layout/rozklad_wkd_search_results.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/rozklad_wkd_user_messages_row.xml" afterPath="$PROJECT_DIR$/res/layout/rozklad_wkd_user_messages_row.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/messages.xml" afterPath="$PROJECT_DIR$/res/menu/messages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/rozkladwkd.xml" afterPath="$PROJECT_DIR$/res/menu/rozkladwkd.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/settings.xml" afterPath="$PROJECT_DIR$/res/layout/settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-pl/strings.xml" afterPath="$PROJECT_DIR$/res/values-pl/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pj/rozkladWKD/MessageActivity.java" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/MessageActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pj/rozkladWKD/SearchResults.java" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/SearchResults.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pj/rozkladWKD/UserMessage.java" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/UserMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pj/rozkladWKD/SettingsActivity.java" afterPath="$PROJECT_DIR$/src/pj/rozkladWKD/SettingsActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/pj_lib.iml" afterPath="$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/pj_lib.iml" />
     </list>
     <ignored path="Rozklad WKD.iws" />
@@ -70,7 +56,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" line="149" class="pj.rozkladWKD.RozkladWKD" package="pj.rozkladWKD">
+      <breakpoint url="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" line="159" class="pj.rozkladWKD.RozkladWKD" package="pj.rozkladWKD">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -83,7 +69,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" line="503" class="pj.rozkladWKD.RozkladWKD" package="pj.rozkladWKD">
+      <breakpoint url="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" line="514" class="pj.rozkladWKD.RozkladWKD" package="pj.rozkladWKD">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -96,7 +82,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java" line="56" class="pj.rozkladWKD.MessageAdapter" package="pj.rozkladWKD">
+      <breakpoint url="file://$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java" line="61" class="pj.rozkladWKD.MessageAdapter" package="pj.rozkladWKD">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -150,46 +136,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MessageAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="1931" selection-end="1931" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/values-pl/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="47" selection-start="3844" selection-end="3844" vertical-scroll-proportion="0.6817043">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="25" selection-start="2880" selection-end="2880" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/HttpClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="77" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RozkladWKD.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="48" selection-start="2181" selection-end="2181" vertical-scroll-proportion="0.0">
+            <state line="221" column="56" selection-start="6893" selection-end="6893" vertical-scroll-proportion="-9.387096">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/settings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="41" selection-start="320" selection-end="332" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/SettingsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="12" selection-start="1810" selection-end="1810" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RozkladWKDApplication.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKDApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="68" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -197,47 +174,72 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vals.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RozkladWKDFree/res/values/vals.xml">
+      <file leaf-file-name="C2DMessaging.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/android/c2dm/C2DMessaging.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="109" column="26" selection-start="4132" selection-end="4132" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#4856#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="C2DMBaseReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/google/android/c2dm/C2DMBaseReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="165" column="25" selection-start="6082" selection-end="6082" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#7344#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="C2DMReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/C2DMReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="39" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#2125#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeviceRegistrar.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/DeviceRegistrar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="89" column="68" selection-start="3597" selection-end="3612" vertical-scroll-proportion="0.85696673">
+              <folding>
+                <element signature="e#0#4558#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1894#1909#0" expanded="true" />
+                <element signature="e#3510#3525#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values-pl/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="114" column="148" selection-start="8245" selection-end="8245" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="Prefs.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/Prefs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="52" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="66" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="83" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vals.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/vals.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="16" column="49" selection-start="520" selection-end="532" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -253,28 +255,28 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/res/layout/fragment_buy_premium.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/BuyPremiumFragment.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/res/layout/fragment_buy_premium.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/SearchResults.java" />
-        <option value="$PROJECT_DIR$/res/values-xlarge/dimens.xml" />
-        <option value="$PROJECT_DIR$/res/layout/fragment_buy_premium.xml" />
-        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/UserMessage.java" />
-        <option value="$PROJECT_DIR$/res/layout/rozklad_wkd_user_messages_row.xml" />
-        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java" />
-        <option value="$PROJECT_DIR$/res/menu/messages.xml" />
-        <option value="$PROJECT_DIR$/res/layout/add_new_message_dialog.xml" />
-        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/MessageActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/rozklad_wkd_search_results.xml" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/values-pl/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/google/android/c2dm/C2DMBaseReceiver.java" />
+        <option value="$PROJECT_DIR$/src/com/google/android/c2dm/C2DMBroadcastReceiver.java" />
+        <option value="$PROJECT_DIR$/src/com/google/android/c2dm/C2DMessaging.java" />
         <option value="$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/DeviceIdGenerator.java" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/Prefs.java" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/TurnOnPushFragment.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java" />
+        <option value="$PROJECT_DIR$/res/layout/settings.xml" />
+        <option value="$PROJECT_DIR$/res/values-pl/strings.xml" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/C2DMReceiver.java" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKDApplication.java" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/src/pj/rozkladWKD/DeviceRegistrar.java" />
       </list>
     </option>
   </component>
@@ -310,16 +312,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rozklad WKD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -385,6 +377,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rozklad WKD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RozkladWKD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c2dm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -622,54 +632,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Rozklad WKD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActionBarSherlock" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rozklad WKD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActionBarSherlock" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionbarsherlock" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rozklad WKD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActionBarSherlock" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionbarsherlock" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -754,6 +724,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -779,24 +767,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -968,12 +938,12 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24008575" sideWeight="0.44827586" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55172414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -983,7 +953,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18620689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1047,119 +1017,141 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/UserMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/messages.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/add_new_message_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="98" selection-start="954" selection-end="954" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/MessageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="232" column="72" selection-start="6822" selection-end="6822" vertical-scroll-proportion="-8.387096">
-          <folding>
-            <element signature="e#5751#5766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/rozklad_wkd_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="8" selection-start="365" selection-end="417" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/rozklad_wkd_search_results.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="72" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/MessageAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1931" selection-end="1931" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/vals.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="52" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="66" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="83" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
+        <state line="207" column="12" selection-start="6147" selection-end="6246" vertical-scroll-proportion="-10.032258">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/HttpClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="77" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
+        <state line="42" column="26" selection-start="1442" selection-end="1442" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java">
+    <entry file="jar://C:/android-sdk_r07-windows/android-sdk-windows/platforms/android-15/android.jar!/android/util/Log.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="48" selection-start="2181" selection-end="2181" vertical-scroll-proportion="0.0">
+        <state line="27" column="22" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/DeviceIdGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="18" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RozkladWKDFree/res/values/vals.xml">
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="111" column="56" selection-start="7269" selection-end="7269" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/TurnOnPushFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="25" selection-start="2880" selection-end="2880" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="25" column="35" selection-start="789" selection-end="807" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#948#1282#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1332#1526#0" expanded="true" />
+            <element signature="e#1507#1508#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/Prefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="49" selection-start="520" selection-end="532" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values-pl/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="47" selection-start="3844" selection-end="3844" vertical-scroll-proportion="0.6817043">
+        <state line="114" column="148" selection-start="8245" selection-end="8245" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="41" selection-start="320" selection-end="332" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/C2DMReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="39" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#2125#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/android/c2dm/C2DMessaging.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="26" selection-start="4132" selection-end="4132" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#4856#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/google/android/c2dm/C2DMBaseReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="25" selection-start="6082" selection-end="6082" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#7344#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="12" selection-start="1810" selection-end="1810" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKDApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="68" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/RozkladWKD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="221" column="56" selection-start="6893" selection-end="6893" vertical-scroll-proportion="-9.387096">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pj/rozkladWKD/DeviceRegistrar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="68" selection-start="3597" selection-end="3612" vertical-scroll-proportion="0.85696673">
+          <folding>
+            <element signature="e#0#4558#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1894#1909#0" expanded="true" />
+            <element signature="e#3510#3525#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1215,7 +1207,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>RozkladWKDFree</last-edited>
+          <last-edited>Rozklad WKD</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

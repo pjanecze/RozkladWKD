@@ -14,11 +14,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import android.content.res.Configuration;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.actionbarsherlock.ActionBarSherlock;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.*;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -66,10 +68,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import pj.rozkladWKD.pj.rozkladWKD.ui.TurnOnPushFragment;
 
 
-
-public class RozkladWKD extends SherlockActivity {
+public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFragment.TurnOnPushListener{
 
 	private static final String TAG = "MainActivity";
 
@@ -99,6 +101,7 @@ public class RozkladWKD extends SherlockActivity {
 	public static final String NEW_VERSION_AVAILABLE = "new_version";
 	public static final String LOCAL_SCHEDULE_CHANGED = "ch_upd_changed";
     public static final String SHOW_PREMIUM_DIALOG = "sh_premium_dialog";
+
 	
 	
 	public static final String YEAR = "YEAR";
@@ -146,7 +149,6 @@ public class RozkladWKD extends SherlockActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		setContentView(R.layout.rozklad_wkd_main);
 
 		if(savedInstanceState!=null) {
@@ -210,9 +212,20 @@ public class RozkladWKD extends SherlockActivity {
 					&& settings.getBoolean(CHECK_UPDATES, false)
 					&& settings.getBoolean(NEW_VERSION_AVAILABLE, false))
 				Toast.makeText(this, R.string.schedule_new_version, Toast.LENGTH_LONG).show();
-			
+
+
+            if(settings.getBoolean(Prefs.TURN_ON_DIALOG_SHOWN, false)) {
+                editor = settings.edit();
+                editor.putBoolean(Prefs.TURN_ON_DIALOG_SHOWN, true);
+                editor.commit();
+
+                FragmentManager fm = getSupportFragmentManager();
+                TurnOnPushFragment fragment = new TurnOnPushFragment();
+                fragment.show(fm, "turn_on_push_fragment");
+            }
 		}
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+
 	}
 	private void checkScheduleUpdate(boolean showDialog){
 		
@@ -599,9 +612,19 @@ public class RozkladWKD extends SherlockActivity {
         else
             return "0" + String.valueOf(c);
     }
-    
-    
-    
+
+
+
+    @Override
+    public void onTurnPushOn() {
+        editor = settings.edit();
+        editor.putBoolean(Prefs.PUSH_TURNED_ON, true);
+        editor.commit();
+
+        ((RozkladWKDApplication) getApplication()).registerPushes();
+    }
+
+
     private class ScheduleVersionCheck extends AsyncTask<Integer, Void, Boolean> {
 
     	ProgressDialog dialog;
@@ -619,7 +642,6 @@ public class RozkladWKD extends SherlockActivity {
 		protected void onPreExecute() {
 			
 			if(showDialog) {
-				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 				dialog = ProgressDialog.show(RozkladWKD.this, getString(R.string.app_name), getString(R.string.checking_schedule_version));
 				dialog.setIcon(R.drawable.ic_launcher_wkd);
 				dialog.setTitle(getString(R.string.app_name));
@@ -677,7 +699,6 @@ public class RozkladWKD extends SherlockActivity {
 			
 			if(e != null) {
 				if(showDialog) {
-					setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 					dialog.dismiss();
 				}
 				Error.handle(RozkladWKD.this, "WKD", e);
@@ -685,7 +706,6 @@ public class RozkladWKD extends SherlockActivity {
 				if(result != null && result.booleanValue() == false) {
 					//pobierz now� wersje
 					if(showDialog) {
-						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
 					}
 					editor = settings.edit();
@@ -694,7 +714,6 @@ public class RozkladWKD extends SherlockActivity {
 					showDialog(DIALOG_NEW_SCHEDULE);
 				} else if(result != null && result.booleanValue() == true) {
 					if(showDialog) {
-						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
 						Toast.makeText(RozkladWKD.this, getString(R.string.have_newest_schedule), Toast.LENGTH_LONG).show();
 					}
@@ -704,7 +723,6 @@ public class RozkladWKD extends SherlockActivity {
 					editor.commit();
 				} else {
 					if(showDialog) {
-						setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 						dialog.dismiss();
 					}
 					Toast.makeText(RozkladWKD.this, getString(R.string.error_during_version_check), Toast.LENGTH_LONG).show();
@@ -727,7 +745,6 @@ public class RozkladWKD extends SherlockActivity {
     	
 		@Override
 		protected void onPreExecute() {
-			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 			createProgressDialog();
 			
 			localDB = new LocalDB(RozkladWKD.this);
@@ -828,7 +845,6 @@ public class RozkladWKD extends SherlockActivity {
 
 		@Override
 		protected void onPostExecute(Boolean result) {
-			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 			downloader = null;
 			progressDialog.dismiss();
 			if(e != null) {

@@ -3,6 +3,11 @@
 	<PreferenceCategory 
         android:title="Ustawienia"
         android:key="preference">
+        <CheckBoxPreference
+                android:key="pushturnedon"
+                android:summary="@string/summary_push"
+                android:defaultValue="false"
+                android:title="@string/title_push"/>
 		<CheckBoxPreference
                 android:key="local_schedules"
                 android:summary="@string/summary_local_schedules"

@@ -107,4 +107,7 @@
     <string name="close">Close</string>
     <string name="premium_url">"https://play.google.com/store/apps/details?id=pj.rozkladWKD.premium"</string>
     <string name="menu_premium">Premium</string>
+
+    <string name="turn_on_push_message">Do you want to turn on push messages?\nYou will be noticed about users comments and WKD events.</string>
+    <string name="push_notifications">Push notifications</string>
 </resources>

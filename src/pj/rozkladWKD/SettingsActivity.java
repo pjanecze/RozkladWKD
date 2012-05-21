@@ -21,6 +21,8 @@ public class SettingsActivity extends SherlockPreferenceActivity implements OnSh
 		Preference dbVersion = getPreferenceScreen().findPreference("db_version");
 		dbVersion.setTitle(getString(R.string.version) + ": " + getPreferenceScreen().getSharedPreferences().getInt(RozkladWKD.DB_VERSION, -1));
 
+
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 	}
@@ -51,7 +53,10 @@ public class SettingsActivity extends SherlockPreferenceActivity implements OnSh
 			SharedPreferences.Editor editor = sharedPreferences.edit();
 			editor.putBoolean(RozkladWKD.LOCAL_SCHEDULE_CHANGED, true);
 			editor.commit();
-		}
+		} else if(key.equals(Prefs.PUSH_TURNED_ON)) {
+            RozkladWKDApplication app = (RozkladWKDApplication) getApplication();
+            app.registerPushes();
+        }
 	}
 
 
