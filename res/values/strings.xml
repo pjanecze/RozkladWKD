@@ -110,4 +110,6 @@
 
     <string name="turn_on_push_message">Do you want to turn on push messages?\n\nYou will be noticed about users comments and WKD events.</string>
     <string name="push_notifications">Push notifications</string>
+
+    <string name="new_message">New message</string>
 </resources>

@@ -113,4 +113,6 @@
 
     <string name="title_push">Notyfikacje</string>
     <string name="summary_push">Jeżeli zostaną włączone to urządzenie będzie otrzymywało notyfikacje o nowych wiadomościach oraz zdarzeniach na WKD.</string>
+
+    <string name="new_message">Nowa wiadomość</string>
 </resources>

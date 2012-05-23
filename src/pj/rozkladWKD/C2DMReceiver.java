@@ -17,6 +17,10 @@ package pj.rozkladWKD;
 
 import java.io.IOException;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.util.Log;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -30,6 +34,8 @@ import android.os.Bundle;
 import com.google.android.c2dm.C2DMBaseReceiver;
 
 public class C2DMReceiver extends C2DMBaseReceiver {
+    private static int NOTIFICATION_ID = 1;
+
     public C2DMReceiver() {
         super(DeviceRegistrar.SENDER_ID);
     }
@@ -58,12 +64,36 @@ public class C2DMReceiver extends C2DMBaseReceiver {
             String type = (String) extras.get("type");
             String msg = (String) extras.get("msg");
 
+            if(RozkladWKD.DEBUG_LOG) {
+                Log.d("PUSH", type + ": " + msg);
+            }
 
             if (type.equals("MESSAGE")) {
 
-                //TODO dokonczyc
+                Intent notificationIntent = new Intent(this, MessageActivity.class);
+                PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
+                showNotification(msg, getString(R.string.new_message),
+                        msg, contentIntent);
             }
         }
+    }
+
+    public void showNotification(String ticker, String contentTitle, String contentText, PendingIntent intent) {
+        String ns = Context.NOTIFICATION_SERVICE;
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+
+        int icon = R.drawable.ic_launcher_wkd;
+        CharSequence tickerText = ticker;
+        long when = System.currentTimeMillis();
+
+        Notification notification = new Notification(icon, tickerText, when);
+        Context context = getApplicationContext();
+
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notification.setLatestEventInfo(context, contentTitle, contentText, intent);
+
+        mNotificationManager.notify(NOTIFICATION_ID++, notification);
     }
 }
