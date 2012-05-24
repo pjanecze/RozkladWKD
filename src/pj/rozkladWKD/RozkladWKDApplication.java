@@ -20,7 +20,7 @@ public class RozkladWKDApplication extends Application {
     }
 
     public void registerPushes() {
-        if(Prefs.get(this).getBoolean(Prefs.PUSH_TURNED_ON, false)) {
+        if(Prefs.get(this).getBoolean(Prefs.PUSH_TURNED_ON, Prefs.DEFAULT_PUSH)) {
             String regId = C2DMessaging.getRegistrationId(this);
             if(TextUtils.isEmpty(Prefs.get(this).getString(Prefs.REGISTRATION_ID, ""))) {
                 if (regId != null && !"".equals(regId)) {

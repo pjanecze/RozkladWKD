@@ -113,6 +113,7 @@
 
     <string name="title_push">Notyfikacje</string>
     <string name="summary_push">Jeżeli zostaną włączone to urządzenie będzie otrzymywało notyfikacje o nowych wiadomościach oraz zdarzeniach na WKD.</string>
+    <string name="push_notifications_info">Nowa funkcjonalność - Notyfikacje Push. Więcej informacji na stronie aplikacji w Google Play. Aby wyłączyć przejdź do ustawień.</string>
 
     <string name="new_message">Nowa wiadomość</string>
 </resources>

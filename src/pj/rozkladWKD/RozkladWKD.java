@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import android.content.res.Configuration;
+import android.net.NetworkInfo;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuCompat;
 import android.view.Menu;
@@ -219,9 +220,11 @@ public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFr
                 editor.putBoolean(Prefs.TURN_ON_DIALOG_SHOWN, false);
                 editor.commit();
 
-                FragmentManager fm = getSupportFragmentManager();
-                TurnOnPushFragment fragment = new TurnOnPushFragment();
-                fragment.show(fm, "turn_on_push_fragment");
+                Toast.makeText(this, R.string.push_notifications_info, Toast.LENGTH_LONG).show();
+
+//                FragmentManager fm = getSupportFragmentManager();
+//                TurnOnPushFragment fragment = new TurnOnPushFragment();
+//                fragment.show(fm, "turn_on_push_fragment");
             }
 		}
 
@@ -472,9 +475,13 @@ public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFr
 
 
 	private Boolean checkConnection() {
-		
-		if(!connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnected()) {
-			return connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected();
+
+        final NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+		if(mobileInfo == null || !mobileInfo.isConnected()) {
+            final NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            if(wifiInfo == null || !wifiInfo.isConnected())
+                return false;
+            return true;
 		} else {
 			return true;
 		}
@@ -874,7 +881,7 @@ public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFr
 			progressDialog.show();
 		}
 		
-		
+
     	
     }
  

@@ -16,6 +16,8 @@ public final class Prefs {
     public static final String TURN_ON_DIALOG_SHOWN = "turnOnDialogShown";
     public static final String PUSH_TURNED_ON = "pushturnedon";
 
+    public static final boolean DEFAULT_PUSH = true;
+
     public static SharedPreferences get(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
