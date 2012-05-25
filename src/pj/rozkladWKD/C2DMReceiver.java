@@ -63,6 +63,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
         if (extras != null) {
             String type = (String) extras.get("type");
             String msg = (String) extras.get("msg");
+            String username = (String) extras.get("usr");
 
             if(RozkladWKD.DEBUG_LOG) {
                 Log.d("PUSH", type + ": " + msg);
@@ -70,11 +71,13 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 
             if (type.equals("MESSAGE")) {
 
-                Intent notificationIntent = new Intent(this, MessageActivity.class);
-                PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+                if(!username.equals(Prefs.get(context).getString(Prefs.USERNAME, ""))) {
+                    Intent notificationIntent = new Intent(this, MessageActivity.class);
+                    PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
-                showNotification(msg, getString(R.string.new_message),
-                        msg, contentIntent);
+                    showNotification(msg, getString(R.string.new_message),
+                            msg, contentIntent);
+                }
             }
         }
     }
@@ -91,6 +94,9 @@ public class C2DMReceiver extends C2DMBaseReceiver {
         Context context = getApplicationContext();
 
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notification.defaults |= Notification.DEFAULT_SOUND;
+        notification.defaults |= Notification.DEFAULT_VIBRATE;
+        notification.defaults |= Notification.DEFAULT_LIGHTS;
 
         notification.setLatestEventInfo(context, contentTitle, contentText, intent);
 

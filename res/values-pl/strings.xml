@@ -34,7 +34,7 @@
 		\n\nPo lewej stronie oznaczone jest za ile minut odjeżdza kolejka. Aplikacja pokazuję kolejki do 5 godzin do przodu. Pokazywane są też kolejki, które już odjechały (do 5 min).
 	</string>
 	<string name="main_info_text">
-		Rozkład WKD 1.6\n\n
+		Rozkład WKD 1.7\n\n
 		Program ten nie jest oficjalnym rozkładem WKD. Pomimo włożeniu wszelkich starań w poprawnym wyświetlaniu rozkładu, może się zdarzyć, że niektóre połączenia nie będą poprawnie wyświetlane - autor aplikacji nie ponosi odpowiedzialności za ewentualne kłopoty z tym związane.\n\n
 		Publikowane przez użytkowników wiadomości (w menu \"wiadomości od użytkowników\") są ich prywatnymi tekstami. Autor aplikacji nie ponosi odpowiedzialności za treść tych tekstów.\n\n
 		Podziękowania dla Dant za pomoc przy tworzeniu ikon.\n\n

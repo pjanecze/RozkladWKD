@@ -25,7 +25,7 @@
                android:divider="@color/separator_color"
                android:dividerHeight="1dp"
                android:minHeight="100dp"
-               android:paddingLeft="10dp"
-               android:paddingRight="10dp" />
+               android:layout_marginLeft="@dimen/main_margin"
+               android:layout_marginRight="@dimen/main_margin" />
 
 </LinearLayout>

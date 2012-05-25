@@ -15,6 +15,7 @@ public final class Prefs {
     public static final String REGISTRATION_ID = "deviceRegistrationID";
     public static final String TURN_ON_DIALOG_SHOWN = "turnOnDialogShown";
     public static final String PUSH_TURNED_ON = "pushturnedon";
+    public static final String USERNAME = "username";
 
     public static final boolean DEFAULT_PUSH = true;
 

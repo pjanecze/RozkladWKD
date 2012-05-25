@@ -126,6 +126,7 @@
 			android:layout_gravity="center_horizontal"
                 android:drawableRight="@drawable/ic_search"
                 android:textColor="@color/white"
+                android:drawablePadding="8dp"
                 style="@style/Widget.Holo.Button"/>
 
 
