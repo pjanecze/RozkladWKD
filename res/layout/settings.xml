@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory 
-        android:title="Ustawienia"
+        android:title="@string/general"
         android:key="preference">
-        <CheckBoxPreference
-                android:key="pushturnedon"
-                android:summary="@string/summary_push"
-                android:defaultValue="true"
-                android:title="@string/title_push"/>
+
 		<CheckBoxPreference
                 android:key="local_schedules"
                 android:summary="@string/summary_local_schedules"
@@ -24,6 +20,29 @@
         	android:summary="@string/summary_username"
         	android:defaultValue="@string/noone"
         	android:title="@string/title_username"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="@string/notifications"
+            android:key="preference">
+        <CheckBoxPreference
+                android:key="pushturnedon"
+                android:summary="@string/summary_push"
+                android:defaultValue="true"
+                android:title="@string/title_push"/>
+
+        <CheckBoxPreference
+                android:key="notification_sound"
+                android:summary="@string/summary_notification_sound"
+                android:defaultValue="true"
+                android:title="@string/title_notification_sound"
+                android:dependency="pushturnedon"/>
+
+        <CheckBoxPreference
+                android:key="notification_vibration"
+                android:summary="@string/summary_notification_vibration"
+                android:defaultValue="true"
+                android:title="@string/title_notification_vibration"
+                android:dependency="pushturnedon"/>
     </PreferenceCategory>
     <PreferenceCategory
     	android:title="Informacje"

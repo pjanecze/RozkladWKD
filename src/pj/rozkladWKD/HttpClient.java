@@ -46,7 +46,7 @@ public class HttpClient {
 
 	// Create a new HttpClient and Post Header  
 	    DefaultHttpClient httpclient = new DefaultHttpClient();  
-	    HttpPost httppost = new HttpPost("http://www.mmaj.nazwa.pl/rozkladwkd/listener2.php");  
+	    HttpPost httppost = new HttpPost("http://www.mmaj.nazwa.pl/rozkladwkd/listener2.php");
 	    nameValuePairs.add(new BasicNameValuePair("app_ver", RozkladWKD.APP_VERSION));
 	 
         // Add your data  

@@ -42,6 +42,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 
     @Override
     public void onRegistered(Context context, String registration) {
+
         DeviceRegistrar.registerWithServer(context, registration);
     }
 
@@ -60,23 +61,31 @@ public class C2DMReceiver extends C2DMBaseReceiver {
     @Override
     public void onMessage(Context context, Intent intent) {
         Bundle extras = intent.getExtras();
-        if (extras != null) {
-            String type = (String) extras.get("type");
-            String msg = (String) extras.get("msg");
-            String username = (String) extras.get("usr");
+        if(!Prefs.get(context).getBoolean(Prefs.PUSH_TURNED_ON, true)) {
+            RozkladWKDApplication app = (RozkladWKDApplication) getApplication();
+            SharedPreferences.Editor edit = Prefs.get(context).edit();
+            edit.putBoolean(Prefs.PUSH_TURNED_ON, false);
+            edit.commit();
+            app.registerPushes();
+        } else {
+            if (extras != null) {
+                String type = (String) extras.get("type");
+                String msg = (String) extras.get("msg");
+                String username = (String) extras.get("usr");
 
-            if(RozkladWKD.DEBUG_LOG) {
-                Log.d("PUSH", type + ": " + msg);
-            }
+                if(RozkladWKD.DEBUG_LOG) {
+                    Log.d("PUSH", type + ": " + msg);
+                }
 
-            if (type.equals("MESSAGE")) {
+                if (type.equals("MESSAGE")) {
 
-                if(!username.equals(Prefs.get(context).getString(Prefs.USERNAME, ""))) {
-                    Intent notificationIntent = new Intent(this, MessageActivity.class);
-                    PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+                    if(!username.equals(Prefs.get(context).getString(Prefs.USERNAME, ""))) {
+                        Intent notificationIntent = new Intent(this, MessageActivity.class);
+                        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
-                    showNotification(msg, getString(R.string.new_message),
-                            msg, contentIntent);
+                        showNotification(msg, getString(R.string.new_message),
+                                msg, contentIntent);
+                    }
                 }
             }
         }
@@ -94,8 +103,11 @@ public class C2DMReceiver extends C2DMBaseReceiver {
         Context context = getApplicationContext();
 
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
-        notification.defaults |= Notification.DEFAULT_SOUND;
-        notification.defaults |= Notification.DEFAULT_VIBRATE;
+        SharedPreferences prefs = Prefs.get(context);
+        if(prefs.getBoolean(Prefs.NOTIFICATION_SOUND, true))
+            notification.defaults |= Notification.DEFAULT_SOUND;
+        if(prefs.getBoolean(Prefs.NOTIFICATION_VIBRATION, true))
+            notification.defaults |= Notification.DEFAULT_VIBRATE;
         notification.defaults |= Notification.DEFAULT_LIGHTS;
 
         notification.setLatestEventInfo(context, contentTitle, contentText, intent);

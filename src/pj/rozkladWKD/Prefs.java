@@ -16,6 +16,8 @@ public final class Prefs {
     public static final String TURN_ON_DIALOG_SHOWN = "turnOnDialogShown";
     public static final String PUSH_TURNED_ON = "pushturnedon";
     public static final String USERNAME = "username";
+    public static final String NOTIFICATION_SOUND = "notification_sound";
+    public static final String NOTIFICATION_VIBRATION = "notification_vibration";
 
     public static final boolean DEFAULT_PUSH = true;
 

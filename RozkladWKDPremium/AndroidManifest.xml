@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="pj.rozkladWKD.premium" android:versionName="1.6" android:versionCode="16">
+          package="pj.rozkladWKD.premium" android:versionName="1.8" android:versionCode="19">
 
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="11"/>
 
@@ -19,7 +19,8 @@
 
     <application android:icon="@drawable/ic_launcher_wkd" android:label="@string/app_name"
                  android:description="@string/description" android:debuggable="true"
-            android:name="pj.rozkladWKD.RozkladWKDApplication">
+                 android:name="pj.rozkladWKD.RozkladWKDApplication"
+                 android:hardwareAccelerated="true">
 
         <activity android:name="pj.rozkladWKD.RozkladWKD" android:label="@string/app_name"
                   android:theme="@style/rozkladWKD_style"
@@ -35,12 +36,12 @@
         <activity android:name="pj.rozkladWKD.MessageActivity" android:theme="@style/rozkladWKD_style" android:configChanges="orientation"></activity>
 
         <!-- In order to use the c2dm library, an
-   application must declare a class with the name C2DMReceiver, in its
-   own package, extending com.google.android.c2dm.C2DMBaseReceiver
+       application must declare a class with the name C2DMReceiver, in its
+       own package, extending com.google.android.c2dm.C2DMBaseReceiver
 
-   It must also include this section in the manifest, replacing
-   "com.google.android.apps.chrometophone" with its package name. -->
-        <service android:name="pj.rozkladWKD.C2DMReceiver" />
+       It must also include this section in the manifest, replacing
+       "com.google.android.apps.chrometophone" with its package name. -->
+        <service android:name="C2DMReceiver" />
 
         <!-- Only google service can send data messages for the app. If permission is not set -
       any other app can generate it -->
