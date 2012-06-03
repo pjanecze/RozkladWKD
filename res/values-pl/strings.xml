@@ -34,7 +34,7 @@
 		\n\nPo lewej stronie oznaczone jest za ile minut odjeżdza kolejka. Aplikacja pokazuję kolejki do 5 godzin do przodu. Pokazywane są też kolejki, które już odjechały (do 5 min).
 	</string>
 	<string name="main_info_text">
-		Rozkład WKD 1.8\n\n
+		Rozkład WKD 1.9\n\n
 		Program ten nie jest oficjalnym rozkładem WKD. Pomimo włożeniu wszelkich starań w poprawnym wyświetlaniu rozkładu, może się zdarzyć, że niektóre połączenia nie będą poprawnie wyświetlane - autor aplikacji nie ponosi odpowiedzialności za ewentualne kłopoty z tym związane.\n\n
 		Publikowane przez użytkowników wiadomości (w menu \"wiadomości od użytkowników\") są ich prywatnymi tekstami. Autor aplikacji nie ponosi odpowiedzialności za treść tych tekstów.\n\n
 		Podziękowania dla Dant za pomoc przy tworzeniu ikon.\n\n
@@ -47,7 +47,7 @@
 	<string name="user_messages_text">Wiadomości od użytkowników</string>
 	<string name="loader_frames_duration">150</string>
 	<string name="username">Twój nick (max.30 znaków)</string>
-	<string name="message">Treść wiadomości (max.255 znaków)</string>
+	<string name="message">Wpisz wiadomość</string>
 	<string name="adding_new_message">Dodawanie nowej wiadomości</string>
 	<string name="noone"></string>
 	<string name="add">Dodaj</string>
@@ -115,7 +115,7 @@
     <string name="summary_push">Jeżeli zostaną włączone to urządzenie będzie otrzymywało notyfikacje o nowych wiadomościach oraz zdarzeniach na WKD.</string>
     <string name="push_notifications_info">Nowa funkcjonalność - Notyfikacje Push. Więcej informacji na stronie aplikacji w Google Play. Aby wyłączyć przejdź do ustawień.</string>
 
-    <string name="new_message">Nowa wiadomość</string>
+    <string name="new_message">"Nowa wiadomość [%s]"</string>
 
     <string name="general">Ogólne</string>
 
@@ -125,4 +125,21 @@
     <string name="title_notification_sound">Dźwięk</string>
     <string name="summary_notification_vibration">Włącza domyślną wibrację przy przyjściu notyfikacji.</string>
     <string name="title_notification_vibration">Wybracje</string>
+    <string name="message_too_long">Wiadomość zbyt długa (max. 512 liter)</string>
+    <string name="set_username_title">Ustaw nick</string>
+    <string name="field_value_too_long">Value too long</string>
+
+    <string name="title_app">Aplikacja</string>
+    <string name="title_wkd">WKD</string>
+    <string name="title_events">Zdarzenia</string>
+
+    <string name="no_messages">Brak wiadomości</string>
+    <string name="loading_messages">Wczytywanie...</string>
+
+    <string name="summary_push_categories">Wybierz, o których kategoriach wiadomości chcesz być informowany.</string>
+    <string name="title_push_categories">Kategorie notyfikacji</string>
+
+    <string name="EVS">Zdarzenia</string>
+    <string name="WKD">WKD</string>
+    <string name="APP">Aplikacja</string>
 </resources>

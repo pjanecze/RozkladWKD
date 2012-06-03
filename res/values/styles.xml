@@ -3,6 +3,7 @@
 	<style name="rozkladWKD_style" parent="Theme.Sherlock.Light.DarkActionBar">
 		<item name="android:textSize">14dp</item>
 		<item name="android:typeface">sans</item>
+        <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>
 		<!--<item name="android:textColor">@color/black</item>-->
 	</style>
 	<style name="searchResults_style" parent="Theme.Sherlock.Light.DarkActionBar">
@@ -19,4 +20,16 @@
 	</style>
 
     <style name="dialogTheme" parent="Theme.Sherlock.Light.Dialog"></style>
+
+    <style name="CustomTitlePageIndicator">
+        <item name="android:background">#18FF0000</item>
+        <item name="footerColor">#FFAA2222</item>
+        <item name="footerLineHeight">1dp</item>
+        <item name="footerIndicatorHeight">3dp</item>
+        <item name="footerIndicatorStyle">underline</item>
+        <item name="android:textColor">#AA000000</item>
+        <item name="selectedColor">#FF000000</item>
+        <item name="selectedBold">true</item>
+    </style>
+
 </resources>

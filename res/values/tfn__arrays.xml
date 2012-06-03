@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="pref_upload_buckets_default_entries">
+		<item>All</item>
+		<item>Test1</item>
+		<item>Test2</item>
+	</string-array>
+	<string-array name="pref_upload_buckets_default_values">
+		<item>#ALL#</item>
+		<item>Test1 Value</item>
+		<item>Test2 Value</item>
+	</string-array>
+</resources>

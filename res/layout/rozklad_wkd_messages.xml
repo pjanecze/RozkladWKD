@@ -4,28 +4,48 @@
     android:layout_height="match_parent"
     android:background="@drawable/rounded_background"
     android:orientation="vertical" 
-    android:paddingTop="3dp" android:paddingBottom="3dp" android:paddingLeft="1dp" android:paddingRight="1dp">
+    >
+
+        <com.viewpagerindicator.TitlePageIndicator
+            android:id="@+id/titles"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/abs__ab_bottom_solid_light_holo"
+            android:padding="4dp">
+        <EditText
+                android:id="@+id/message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textCapSentences|textMultiLine|textAutoComplete|textAutoCorrect"
+            android:maxLength="512"
+            android:maxHeight="100dp"
+            android:hint="@string/message"
+            android:paddingBottom="12dp"
+                android:layout_gravity="bottom"
+        />
+        <ImageButton
+                android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_send"
 
-               <ImageView
-                   android:id="@+id/user_messages_loader"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:visibility="invisible" />
-               
+            />
+    </LinearLayout>
 
-           <ListView
-               android:id="@id/android:list"
-               android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:cacheColorHint="@color/main_layout_background"
-               android:divider="@color/separator_color"
-               android:dividerHeight="1dp"
-               android:minHeight="100dp"
-               android:layout_marginLeft="@dimen/main_margin"
-               android:layout_marginRight="@dimen/main_margin" />
 
 </LinearLayout>

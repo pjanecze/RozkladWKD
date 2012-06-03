@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tfn="http://schemas.android.com/apk/res-auto">
 	<PreferenceCategory 
         android:title="@string/general"
         android:key="preference">
@@ -29,6 +30,15 @@
                 android:summary="@string/summary_push"
                 android:defaultValue="true"
                 android:title="@string/title_push"/>
+
+        <com.threefiftynice.android.preference.ListPreferenceMultiSelect
+                tfn:separator=";"
+                android:defaultValue="EVS;APP"
+                android:key="push_categories"
+                android:title="@string/title_push_categories" android:dialogTitle="@string/title_push_categories"
+                android:summary="@string/summary_push_categories"
+                android:entries="@array/push_categories"
+                android:entryValues="@array/push_categories_values"/>
 
         <CheckBoxPreference
                 android:key="notification_sound"

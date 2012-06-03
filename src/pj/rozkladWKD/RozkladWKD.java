@@ -77,7 +77,7 @@ public class RozkladWKD extends SherlockFragmentActivity implements TurnOnPushFr
 	private static final String TAG = "MainActivity";
 
 	public static final Boolean DEBUG_LOG = false;
-	public static final String APP_VERSION = "18";
+	public static final String APP_VERSION = "19";
 	
 	
 	

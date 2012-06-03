@@ -34,7 +34,7 @@
 		\n\nOn left size there is information how much time left for train departure. Application shows connection 5 hours ahead. Also trains it shows trains that leave, to 5 minutes ago."
 	</string>
 	<string name="main_info_text">
-		"WKD Schedule 1.8\n\n
+		"WKD Schedule 1.9\n\n
 		Application is unofficial appliaction of WKD schedule.\n\n
 		Message published by users are theirs private messages. Author does not hold responsibility for what they writes.\n\n
 		Thanks for Dant for icons.\n\n
@@ -47,7 +47,7 @@
 	<string name="user_messages_text">Messages from users</string>
 	<string name="loader_frames_duration">150</string>
 	<string name="username">Your nick (max.30 chars)</string>
-	<string name="message">Message (max.255 znaków)</string>
+	<string name="message">Write message</string>
 	<string name="adding_new_message">Adding new message</string>
 	<string name="noone"></string>
 	<string name="add">Add</string>
@@ -113,7 +113,7 @@
 
     <string name="push_notifications_info">There is new feature - Push Notifications. More info on application play market page. You can turn it off in settings.</string>
 
-    <string name="new_message">New message</string>
+    <string name="new_message">"New message [%s]"</string>
 
     <string name="general">General</string>
 
@@ -123,4 +123,19 @@
     <string name="title_notification_sound">Sound</string>
     <string name="summary_notification_vibration">Vibrate on new notification.</string>
     <string name="title_notification_vibration">Vibration</string>
+    <string name="message_too_long">Message to long (max. 512 chars)</string>
+    <string name="set_username_title">Set your nick</string>
+    <string name="field_value_too_long">Value too long</string>
+    <string name="title_app">Application</string>
+    <string name="title_wkd">WKD</string>
+    <string name="title_events">Events</string>
+
+    <string name="no_messages">No messages</string>
+    <string name="loading_messages">Loading...</string>
+
+    <string name="summary_push_categories">Choose which categories you want to be informed.</string>
+    <string name="title_push_categories">Push categories</string>
+    <string name="EVS">Events</string>
+    <string name="WKD">WKD</string>
+    <string name="APP">Application</string>
 </resources>
