@@ -21,6 +21,8 @@ public class TurnOnPushFragment extends SherlockDialogFragment{
         void onTurnPushOn();
     }
 
+    public TurnOnPushFragment() {};
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

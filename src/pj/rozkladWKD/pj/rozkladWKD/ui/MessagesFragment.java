@@ -57,6 +57,8 @@ public class MessagesFragment extends SherlockFragment {
 
     private TextView mEmpty;
 
+    public MessagesFragment() {}
+
     public void resetMessages() {
         if(getActivity() != null && mType != null)
             Prefs.resetNotificationMessageNumber(getActivity(), mType);
