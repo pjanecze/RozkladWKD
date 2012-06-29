@@ -175,19 +175,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="59" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
+            <state line="2" column="84" selection-start="192" selection-end="192" vertical-scroll-proportion="-0.02377179">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="67" selection-start="175" selection-end="175" vertical-scroll-proportion="-0.65048546">
+            <state line="2" column="92" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -278,8 +278,8 @@
         <option value="$PROJECT_DIR$/ActionBarSherlock/src/com/actionbarsherlock/app/SherlockFragment.java" />
         <option value="$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/MessagesFragment.java" />
         <option value="$PROJECT_DIR$/src/pj/rozkladWKD/pj/rozkladWKD/ui/TurnOnPushFragment.java" />
-        <option value="$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -610,10 +610,10 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="ExportedApkPath" value="$PROJECT_DIR$/RozkladWKDFree/1_9c.apk" />
+    <property name="ExportedApkPath" value="$PROJECT_DIR$/RozkladWKDPremium/1_9c.apk" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="ExportedModule" value="RozkladWKDFree" />
+    <property name="ExportedModule" value="RozkladWKDPremium" />
     <property name="DEBUGGABLE_DEVICE" value="S5830ba02aaa8" />
     <property name="DEBUGGABLE_PROCESS" value="pj.rozkladWKD.premium" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -1071,16 +1071,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="59" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
+        <state line="2" column="92" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RozkladWKDPremium/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/RozkladWKDFree/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="67" selection-start="175" selection-end="175" vertical-scroll-proportion="-0.65048546">
+        <state line="2" column="84" selection-start="192" selection-end="192" vertical-scroll-proportion="-0.02377179">
           <folding />
         </state>
       </provider>
