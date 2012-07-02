@@ -1,9 +1,9 @@
-import java.io.BufferedOutputStream;
-import java.io.File;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import java.awt.image.AreaAveragingScaleFilter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,21 +26,98 @@ public class main {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 
-		tablicawagr = getRozklad("Rozklad_wa_gr.xml");
+        try {
+            tablicawagr = getRozkladCSV("gr_wa.csv");
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+
+        //saveToSQL(tablicawagr, "rozkladwa-gr_new.xml");
+
+//        tablicagrwa = getRozkladCSV("Rozklad_gr_wa.txt");
+
+
+       // saveToSQL(tablicagrwa, "rozkladgr_wa_new.txt");
+
 		
-
-		saveToXml(tablicawagr, "rozkladwa-gr_new.xml");
-
-		
-		test("rozkladwa-gr_new.xml");
+		//test("rozkladwa-gr_new.xml");
 		
 		
 
 	}
 
-	private static void test(String string) {
+    private static String[][] getRozkladCSV(String s) throws IOException {
+        //use buffering, reading one line at a time
+        //FileReader always assumes default encoding is OK!
+        BufferedReader input =  new BufferedReader(new FileReader(s));
+        try {
+            String line = null; //not declared within while loop
+            /*
+            * readLine is a bit quirky :
+            * it returns the content of a line MINUS the newline.
+            * it returns null only for the END of the stream.
+            * it returns an empty String if two newlines appear in a row.
+            */
+
+            HashMap<String, ArrayList<String>> rows = new HashMap<String, ArrayList<String>>();
+
+            while (( line = input.readLine()) != null){
+                String[] rowarr = line.split(";");
+                ArrayList<String> rowlist;
+                if(rowarr.length >1) {
+                    System.out.println("size: " + rowarr.length);
+
+                    String key = rowarr[1];
+                    if(!rows.containsKey(key)) {
+                        rowlist = new ArrayList<String>();
+                    } else {
+                        rowlist = rows.get(key);
+                    }
+                    for(int i = 3; i < rowarr.length; i++) {
+                       rowlist.add(key);
+                    }
+                    rows.put(key, rowlist);
+                }
+            }
+
+            ArrayList<ArrayList<String>> finalList = new ArrayList<ArrayList<String>>(rows.size());
+            int i = 0;
+            Collection<ArrayList<String>> valuesrows = rows.values();
+            for(ArrayList<String> valrow : valuesrows) {
+                i = 0;
+                for(String val : valrow) {
+                    ArrayList<String> connection;
+                    if(finalList.size() <=i)
+                        connection = new ArrayList<String>(28);
+                    else {
+                        connection = finalList.get(i);
+                        finalList.remove(i);
+                    }
+
+                    connection.add(val);
+
+
+                    finalList.add(i, connection);
+                    i++;
+                }
+
+            }
+
+            for(ArrayList<String> connection : finalList) {
+                System.out.println("length: " + connection.size());
+            }
+
+        } finally {
+            input.close();
+        }
+        return  null;
+    }
+
+
+    private static void test(String string) {
 		int size = 68;
 		String[] table = new String[size];
 		
@@ -88,14 +165,16 @@ public class main {
 	public static String[][] getRozklad(String url) {
 		try {
 
-			String[][] tablica = new String[60][34];
-			String[][] tablicaPoprawna = new String[68][30];
+
+			String[][] tablicaPoprawna = new String[68][31];
 			Integer sizeSec = 0;
 			Integer sizeFirst;
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(new File(url));
 			sizeFirst = doc.getElementsByTagName("Row").getLength();
+
+            String[][] tablica = new String[sizeFirst][34];
 
 			Element data, cellItem, cell;
 			NodeList row;
@@ -105,6 +184,7 @@ public class main {
 
 			Element docEle = doc.getDocumentElement();
 			row = docEle.getElementsByTagName("Row");
+
 			for (int i = 0; i < sizeFirst; i++) {
 
 				cell = (Element) row.item(i);
@@ -118,8 +198,12 @@ public class main {
 						tablica[i][j-3]= "";
 					}
 					else if(data != null){
-						
+
+                        try{
 							tablica[i][j-3]= data.getFirstChild().getNodeValue().trim();
+                        } catch (Exception e) {
+                                 e.printStackTrace();
+                        }
 						
 					}
 					
@@ -166,7 +250,7 @@ public class main {
 
 	public static void saveToXml(String[][] tablica, String name) {
 		/*try {
-			// tworzymy fabryke, która posluzy do „produkcji” obiektu klasy
+			// tworzymy fabryke, ktora posluzy do produkcji obiektu klasy
 			// DocumentBuilder
 			DocumentBuilderFactory fabryka = DocumentBuilderFactory
 					.newInstance();

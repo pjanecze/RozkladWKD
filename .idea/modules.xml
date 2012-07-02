@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/Rozklad WKD.iml" filepath="$PROJECT_DIR$/Rozklad WKD.iml" />
       <module fileurl="file://$PROJECT_DIR$/RozkladWKDFree/RozkladWKDFree.iml" filepath="$PROJECT_DIR$/RozkladWKDFree/RozkladWKDFree.iml" />
       <module fileurl="file://$PROJECT_DIR$/RozkladWKDPremium/RozkladWKDPremium.iml" filepath="$PROJECT_DIR$/RozkladWKDPremium/RozkladWKDPremium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WczytywanieXML/WczytywanieXML.iml" filepath="$PROJECT_DIR$/WczytywanieXML/WczytywanieXML.iml" />
       <module fileurl="file://$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/pj_lib.iml" filepath="$PROJECT_DIR$/../pj-utils/ErrorHandlerLib/pj_lib.iml" />
     </modules>
   </component>
